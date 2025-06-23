@@ -1,0 +1,64 @@
+<html>
+<head>
+
+</head>
+<body>
+
+  <h1>Simple User Form</h1>
+
+  <form action="#" method="post" style="background-color: chocolate;">
+    <!-- 16, 17, 20: Basic inputs with placeholder and label -->
+    <label for="name">Name:</label>
+    <input type="text" bodrder="10" id="name" placeholder="Enter name"><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="Enter email"><br><br>
+
+    <label for="message">Message:</label><br>
+    <textarea id="message" placeholder="Enter message here"></textarea><br><br>
+
+    <!-- 18, 30: Submit and Reset -->
+    
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+  </form>
+
+    <!-- 21: Password -->
+    <label for="pass">Password:</label>
+    <input type="password" id="pass"><br><br>
+
+    <!-- 22: Gender radio buttons -->
+    Gender:
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <input type="radio" name="gender" value="Other"> Other<br><br>
+
+    <!-- 23: Checkboxes -->
+    Languages:
+    <input type="checkbox" name="language" value="HTML"> HTML
+    <input type="checkbox" name="language" value="CSS"> CSS
+    <input type="checkbox" name="language" value="JS"> JS<br><br>
+
+    <!-- 24: Dropdown -->
+    Country:
+    <select style="background-color: gold;">
+      <option>India</option>
+      <option>Russia</option>
+      <option>Japan</option>
+    </select><br><br>
+
+    <!-- 25: Textarea already used above -->
+
+    <!-- 26: Date -->
+    Date of Birth: <input type="date" style="background-color:silver;"><br><br>
+
+    <!-- 27: Number -->
+    Age: <input type="number" min="10" max="100" style="background-color:lime;"><br><br>
+
+    <!-- 28: File -->
+    Upload File: <input type="file" style="background-color:lightskyblue;"><br><br>
+
+    <!-- 29: Validation with required, maxlength, pattern -->
+    Username: <input type="text" required maxlength="12" pattern="[A-Za-z0-9]+"><br><br>
+</body>
+</html>
