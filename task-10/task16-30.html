@@ -1,0 +1,166 @@
+<html>
+<head>
+
+  <style>
+    /* Task 16: Paragraph text color */
+    p.color-text {
+      color: navy;
+    }
+
+    .font-family {
+      font-family: "Courier New", monospace;
+    }
+
+    h1.fallback {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    h2.size-heading {
+      font-size: 36px;
+    }
+    p.size-para {
+      font-size: 18px;
+    }
+
+    span.bold {
+      font-weight: bold;
+    }
+
+    .normal {
+      font-weight: normal;
+    }
+    .bold-weight {
+      font-weight: bold;
+    }
+    .lighter {
+      font-weight: lighter;
+    }
+
+    h3.center {
+      text-align: center;
+    }
+    p.left {
+      text-align: left;
+    }
+    footer.right {
+      text-align: right;
+    }
+
+
+    a.no-underline {
+      text-decoration: none;
+    }
+
+    h4.decorated {
+      text-decoration: underline overline;
+    }
+    
+     /*task 25- Navigation Menu Items*/
+    nav {
+      background-color: #333;
+      padding: 10px;
+    }
+
+    .nav-menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    <h1>
+    .nav-menu li {
+      margin-right: 20px;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: white;
+      text-transform: uppercase;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      padding: 8px 12px;
+      transition: background 0.3s;
+    }
+
+    .nav-menu a:hover {
+      background-color: #555;
+      border-radius: 5px;
+    }
+
+    .capitalize {
+      text-transform: capitalize;
+    }
+    .lowercase {
+      text-transform: lowercase;
+    }
+
+    h2.shadow-light {
+      text-shadow: 2px 2px #ccc;
+    }
+
+    .glow {
+      text-shadow: 0 0 8px red;
+    }
+
+    .multi-shadow {
+      text-shadow: 2px 2px 4px #666, -2px -2px 4px #aaa;
+    }
+
+    .multi-colored span:nth-child(1) {
+      text-shadow: 1px 1px red;
+    }
+    .multi-colored span:nth-child(2) {
+      text-shadow: 1px 1px green;
+    }
+    .multi-colored span:nth-child(3) {
+      text-shadow: 1px 1px blue;
+    }
+  </style>
+</head>
+<body>
+
+  <p class="color-text font-family">paragraph is navy and uses Courier New.</p>
+
+  <h1 class="fallback">Outfit with fallback</h1>
+
+  <h2 class="size-heading">Heading 36px</h2>
+  <p class="size-para">Task 19:Paragraph 18px</p>
+
+  <p>This is a <span class="bold">bold</span> word. <!-- Task 20 --></p>
+
+  <nav>
+    <ul class="nav-menu">
+      <li><a href="#">home</a></li>
+      <li><a href="#">about</a></li>
+      <li><a href="#">services</a></li>
+      <li><a href="#">contact</a></li>
+    </ul>
+  </nav>
+
+  <p class="bold-weight">Task 21: Bold weight</p>
+  <p class="lighter">Task 21: Lighter weight</p>
+
+  <h3 class="center">Task 22: Center-aligned heading</h3>
+  <p class="left">Task 22: Left-aligned paragraph</p>
+  <footer class="right">Task 22: Right-aligned footer</footer>
+
+  <a href="https://www.yahoo.com/" class="no-underline">Task 23: No underline link</a><br>
+
+  <h4 class="decorated">Task 24: Underline and overline</h4>
+
+  <p class="uppercase">Task 25: Navigation Item</p>
+  <p class="capitalize">Task 26: capitalize first</p>
+  <p class="lowercase">TASK 26: LOWERCASE SECOND</p>
+
+  <h2 class="shadow-light">Task 27: Light Shadow</h2>
+
+  <p class="glow">Task 28: Glowing Text</p>
+
+  <p class="multi-shadow">Task 29: Multiple Text Shadows</p>
+
+  <p class="multi-colored">
+    <span>Color</span> <span>Shadow</span> <span>Example</span>
+  </p>
+</body>
+</html>
