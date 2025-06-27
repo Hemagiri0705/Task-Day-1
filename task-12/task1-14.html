@@ -1,0 +1,179 @@
+<html>
+<head>
+  <style>
+    .block-span {
+      display: block;
+      background-color: lightcoral;
+      margin-bottom: 10px;
+    }
+
+    .inline-div {
+      display: inline;
+      background-color: lightblue;
+      padding: 5px;
+    }
+
+    .inline-block {
+      display: inline-block;
+      background-color: lightgreen;
+      padding: 10px;
+      margin: 5px;
+    }
+
+    .hover-container .hide {
+      display: none;
+    }
+
+    .hover-container:hover .hide {
+      display: block;
+      color: red;
+    }
+
+    .block-link {
+      display: block;
+      background-color: lightgray;
+      padding: 10px;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+
+    /* 6 & 7. Static flow layout with border and padding */
+    .static-box {
+      border: 1px solid black;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .relative-box {
+      position: relative;
+      top: 20px;
+      left: 30px;
+      background-color: pink;
+      padding: 10px;
+    }
+
+    .relative-multi {
+      position: relative;
+      margin: 10px;
+      padding: 10px;
+      background-color: lavender;
+    }
+
+    .input-container {
+      position: relative;
+      margin-top: 20px;
+    }
+
+    .input-container label {
+      position: relative;
+      top: -20px;
+      left: 5px;
+    }
+
+    .popup {
+      position: relative;
+      width: 200px;
+      height: 100px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      margin-top: 20px;
+    }
+
+    .popup .close-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      color: red;
+      cursor: pointer;
+    }
+
+    .image-container {
+      position: relative;
+      margin-top: 20px;
+    }
+
+    .image1, .image2 {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+    }
+
+    .image2 {
+      left: 30px;
+      top: 30px;
+      opacity: 0.7;
+    }
+
+    /* 14. Tooltip using absolute */
+    .tooltip-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .tooltip-text {
+      display: none;
+      position: absolute;
+      top: 20px;
+      left: 0;
+      background-color: black;
+      color: white;
+      padding: 5px;
+      font-size: 12px;
+    }
+
+    .tooltip-container:hover .tooltip-text {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <span class="block-span">Span with display: block</span>
+
+  <div class="inline-div">Div with display: inline</div>
+
+  <div class="inline-block">Inline Block 1</div>
+  <div class="inline-block">Inline Block 2</div>
+
+  <div class="hover-container"> Hover me
+    <div class="hide">Now visible!</div>
+  </div>
+
+  <a href="#" class="block-link">Block-style Link</a>
+
+  <div class="static-box"> Static box 1</div>
+  <div class="static-box">Static box 2</div>
+  <div class="static-box">Static box 3</div>
+
+  <div class="relative-box">Relative Box</div>
+
+  <div class="relative-multi" style="top: 10px;">Relative Box 1</div>
+  <div class="relative-multi" style="top: 20px;">Relative Box 2</div>
+  
+
+  <div class="input-container">
+    <label>Label Above</label><br>
+    <input type="text">
+  </div>
+
+
+  <div class="popup">
+    <span class="close-btn">X</span>
+    <p>Popup Content</p>
+  </div>
+
+  <div class="image-container">
+    <img src="https://ohmyfacts.com/wp-content/uploads/2024/04/15-ronaldo-facts-fans-should-know-1714300205.jpg"
+         class="image1">
+    <img src="https://ohmyfacts.com/wp-content/uploads/2024/04/15-ronaldo-facts-fans-should-know-1714300205.jpg" 
+         class="image2">
+  </div>
+
+  <p> Hover over this 
+    <span class="tooltip-container">
+      Ronaldo
+      <span class="tooltip-text">Tooltip using absolute</span>
+    </span>.
+  </p>
+</body>
+</html>
