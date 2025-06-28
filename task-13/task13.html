@@ -1,0 +1,114 @@
+<html>
+<head>
+  <title>Product Landing Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      position: sticky;
+      top: 0;
+    }
+
+    nav a {
+      color: white;
+      margin-right: 15px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .section {
+      padding: 20px;
+      background: white;
+      margin: 15px;
+    }
+
+    .product img {
+      width: 200px;
+      margin-right: 15px;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .product-description {
+      display: inline-block;
+      width: 60%;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid #999;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      margin: 5px 0;
+      padding: 8px;
+    }
+
+    .buy-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: green;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>My Product</h1>
+    <nav>
+      <a href="#desc">Description</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="section product" id="desc">
+    <img src="https://m.media-amazon.com/images/I/61eyAd5kHuL.jpg" alt="Product">
+    <div class="product-description">
+      <h3>Nice Product</h3>
+      <p>This is an amazing product with great features and design.</p>
+    </div>
+  </div>
+
+  <div class="section" id="pricing">
+    <h1>Price Comparison</h1>
+    <table>
+      <tr><th>Site</th><th>Price</th></tr>
+      <tr><td>Amazon</td><td>$17.5</td></tr>
+      <tr><td>Flipkart</td><td>$16.25</td></tr>
+    </table>
+  </div>
+
+  <div class="section" id="contact">
+    <h3>Contact Us</h3>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="4" placeholder="Message" required></textarea>
+    </form>
+  </div>
+
+  <button class="buy-button">Buy Now</button>
+</body>
+</html>
