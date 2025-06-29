@@ -1,0 +1,138 @@
+<html>
+<head>
+  <title>Register for Our Web Development Bootcamp</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+
+    fieldset {
+      border: 2px solid #4CAF50;
+      padding: 20px;
+      background: #fff;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    legend {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #4CAF50;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+
+    .radio-group {
+      margin-bottom: 10px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    button {
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    #thankYouModal {
+      display: none;
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border: 2px solid green;
+      z-index: 10;
+    }
+
+    #overlay {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 5;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="registrationForm">
+    <fieldset>
+      <legend>Register for Our Web Development Bootcamp</legend>
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required maxlength="50">
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+
+      <label for="course">Select Course:</label>
+      <select id="course" name="course" required>
+        <option value="">--Choose a course--</option>
+        <option value="frontend">Frontend Development</option>
+        <option value="backend">Backend Development</option>
+        <option value="fullstack">Full Stack Development</option>
+      </select>
+
+      <div class="radio-group">
+        <label>Mode:</label>
+        <input type="radio" name="mode" value="online" required> Online
+        <input type="radio" name="mode" value="offline"> Offline
+      </div>
+
+      <div class="buttons">
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+      </div>
+    </fieldset>
+  </form>
+
+  <!-- Overlay and Modal -->
+  <div id="overlay"></div>
+  <div id="thankYouModal">
+    <p>✅ Thank you for registering!</p>
+  </div>
+
+  <script>
+    const form = document.getElementById('registrationForm');
+    const modal = document.getElementById('thankYouModal');
+    const overlay = document.getElementById('overlay');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      modal.style.display = 'block';
+      overlay.style.display = 'block';
+    });
+
+    overlay.addEventListener('click', function() {
+      modal.style.display = 'none';
+      overlay.style.display = 'none';
+      form.reset();
+    });
+  </script>
+</body>
+</html>
