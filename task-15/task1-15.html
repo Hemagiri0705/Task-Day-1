@@ -1,0 +1,297 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .container {
+            border: 2px solid #333;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .item {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            margin: 5px;
+            text-align: center;
+            flex-shrink: 0; /* Prevent items from shrinking by default */
+        }
+
+        .flex-row {
+            display: flex;
+            flex-direction: row; /* Default */
+        }
+
+        .flex-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .flex-gap {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center; /* Vertically center items */
+            background-color: #555;
+            padding: 10px;
+            color: white;
+        }
+
+        .navbar .logo {
+            font-weight: bold;
+            font-size: 20px;
+            margin-right: auto; /* Pushes nav items to the right */
+        }
+
+        .navbar .nav-items {
+            display: flex;
+        }
+
+        .navbar .nav-item {
+            margin-left: 15px;
+            cursor: pointer;
+        }
+
+        .justify-center {
+            display: flex;
+            justify-content: center;
+        }
+
+        .justify-space-between {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .justify-space-around {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+
+        .justify-flex-end {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .align-center-height {
+            display: flex;
+            align-items: center;
+            height: 150px; /* Added height */
+        }
+
+        .align-flex-direction {
+            display: flex;
+            flex-direction: column; /* Or row */
+            height: 180px;
+            border: 2px solid purple;
+            margin-bottom: 20px;
+        }
+        .align-flex-direction.start {
+             align-items: flex-start;
+        }
+        .align-flex-direction.end {
+             align-items: flex-end;
+        }
+
+        .two-column-layout {
+            display: flex;
+            height: 180px;
+            border: 2px solid orange;
+        }
+
+        .two-column-layout .column {
+            flex: 1; /* Make columns take equal space */
+            display: flex;
+            flex-direction: column; /* To center content vertically */
+            justify-content: center; /* Vertically center content */
+            align-items: center; /* Horizontally center content */
+            background-color: #e9ecef;
+            margin: 5px;
+        }
+
+        .two-column-layout.column:first-child {
+            /* This column is centered */
+        }
+
+        .two-column-layout .column:last-child {
+            /* This column is not vertically centered */
+            justify-content: flex-start; /* Example: align to start */
+            align-items: flex-start; /* Example: align to start */
+        }
+
+        .align-stretch {
+            display: flex;
+            align-items: stretch; /* Items stretch to fill container height */
+            height: 120px;
+            border: 2px solid teal;
+        }
+
+        .align-stretch .item {
+            height: auto; /* Remove explicit height from children */
+            padding: 10px;
+        }
+
+        .card-container {
+            display: flex;
+            border: 2px solid hotpink;
+            height: 200px;
+            align-items: flex-end; /* Default align to bottom */
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            flex: 1; /* Make cards take equal space */
+            display: flex; /* Make card content a flex container */
+            flex-direction: column; /* Stack content vertically */
+        }
+
+        .card.top-align {
+            align-self: flex-start; /* Override parent alignment for this item */
+        }
+        .card.bottom-align {
+             align-self: flex-end; /* Explicitly align to bottom */
+        }
+
+    </style>
+</head>
+<body>
+
+    <h3>Basic flexbox setup (row is default)</h3>
+    <div class="container flex-row">
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+    </div>
+
+    <h3>flex-direction: column</h3>
+    <div class="container flex-column">
+        <div class="item">Item A</div>
+        <div class="item">Item B</div>
+        <div class="item">Item C</div>
+    </div>
+
+    <h3>Add gap: 20px</h3>
+    <div class="container flex-gap">
+        <div class="item">Item X</div>
+        <div class="item">Item Y</div>
+        <div class="item">Item Z</div>
+    </div>
+
+    <h3>Horizontal Navbar</h3>
+    <nav class="navbar">
+        <div class="logo">My Logo</div>
+        <div class="nav-items">
+            <div class="nav-item">Home</div>
+            <div class="nav-item">About</div>
+            <div class="nav-item">Contact</div>
+        </div>
+    </nav>
+
+    <h3>justify-content: center</h3>
+    <div class="container justify-center">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <h3>justify-content: space-between</h3>
+    <div class="container justify-space-between">
+        <div class="item">A</div>
+        <div class="item">B</div>
+        <div class="item">C</div>
+    </div>
+
+    <h3>justify-content: space-around</h3>
+    <div class="container justify-space-around">
+        <div class="item">X</div>
+        <div class="item">Y</div>
+        <div class="item">Z</div>
+    </div>
+
+    <h3>Footer (space-between)</h3>
+    <footer class="footer">
+        <div>&copy; 2025 My Website</div>
+        <div>Privacy Policy</div>
+        <div>Terms of Service</div>
+    </footer>
+
+    <h3>justify-content: flex-end</h3>
+    <div class="container justify-flex-end">
+        <div class="item">End 1</div>
+        <div class="item">End 2</div>
+    </div>
+
+    <h3>align-items: center (with height)</h3>
+    <div class="container align-center-height">
+        <div class="item">Centered 1</div>
+        <div class="item">Centered 2</div>
+    </div>
+
+    <h3>flex-direction: flex-start and flex-end effects</h3>
+    <div class="container align-flex-direction start">
+        <div class="item">Start 1</div>
+        <div class="item">Start 2</div>
+    </div>
+    <div class="container align-flex-direction end">
+        <div class="item">End A</div>
+        <div class="item">End B</div>
+    </div>
+
+    <h3>Two-column layout (one centered, one not)</h3>
+    <div class="two-column-layout">
+        <div class="column">
+            <p>Vertically Centered</p>
+            <p>Content Here</p>
+        </div>
+        <div class="column">
+            <p>Not Centered</p>
+            <p>Top Aligned</p>
+        </div>
+    </div>
+
+    <h3>align-items: stretch (removed child height)</h3>
+    <div class="container align-stretch">
+        <div class="item">Stretch 1</div>
+        <div class="item">Stretch 2</div>
+        <div class="item">Stretch 3</div>
+    </div>
+
+    <h3>Card layout (top-aligned and bottom-aligned)</h3>
+    <div class="card-container">
+        <div class="card top-align">
+            <h3>Upcoming Event</h3>
+            <p>Join our webinar on Flexbox basics.</p>
+            <small>Starts at 10:00 AM</small>
+        </div>
+        <div class="card bottom-align">
+            <h3>Support</h3>
+            <p>Need help? Reach out to our 24/7 support team.</p>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="card">
+            <h3>Latest News</h3>
+            <p>Our platform just got updated with new features.</p>
+            <button>Learn More</button>
+        </div>
+    </div>
+</body>
+</html>

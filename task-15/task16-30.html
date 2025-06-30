@@ -1,0 +1,237 @@
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container {
+            border: 2px solid #333; padding: 10px; margin-bottom: 20px;
+            background-color: #f0f0f0; display: flex;
+            min-height: 80px; /* Ensure some height for align-items */
+        }
+        .item {
+            background-color: #007bff; color: white; padding: 10px; margin: 5px;
+            text-align: center; flex-shrink: 0; min-width: 60px; /* For wrap/nowrap demo */
+        }
+
+        .wrap-container { flex-wrap: wrap; }
+
+        .nowrap-container { flex-wrap: nowrap; overflow-x: auto; } /* Demonstrate overflow */
+
+        .column-reverse-wrap { flex-direction: column-reverse; flex-wrap: wrap; height: 250px; align-content: flex-start; }
+        .column-reverse-wrap .item { height: 40px; } /* Give items height for column-reverse */
+
+        .order-container .item:nth-child(2) { order: -1; } /* 2nd becomes 1st */
+        .order-container .item:nth-child(1) { order: 1; } /* 1st becomes 2nd (or later) */
+
+        .grow-container .item:nth-child(1) { flex-grow: 1; }
+
+        .three-col-layout { flex: 1; } /* Container fills space */
+        .three-col-layout .item:nth-child(1) { flex-basis: 100px; flex-grow: 1; }
+        .three-col-layout .item:nth-child(2) { flex-basis: 200px; flex-grow: 2; } /* Twice as wide */
+        .three-col-layout .item:nth-child(3) { flex-basis: 100px; flex-grow: 1; }
+
+        .flex-basis-container .item:nth-child(1) { flex-basis: 300px; }
+
+        .shrink-container { width: 300px; overflow-x: auto; } /* Make container smaller to show shrink */
+        .shrink-container .item { min-width: 100px; }
+        .shrink-container .item:nth-child(2) { flex-shrink: 0; background-color: orange; } /* Prevent shrinking */
+
+        .flex-shorthand-container .item { flex: 1; }
+
+        .align-self-container { align-items: center; } /* Parent aligns center */
+        .align-self-container .item:nth-child(2) { align-self: flex-start; background-color: purple; }
+
+        .nested-flex-sidebar { display: flex; height: 300px; border: 2px solid green; }
+        .sidebar { flex: 0 0 150px; background-color: #e0e0e0; padding: 10px;
+                   display: flex; flex-direction: column; /* Child is column */
+                   gap: 5px; }
+        .main-content { flex: 1; background-color: #f9f9f9; padding: 10px; }
+        .submenu-item { background-color: #c9e0e8; padding: 5px; text-align: left; font-size: 0.9em; }
+
+        .responsive-navbar {
+            display: flex; justify-content: space-between; align-items: center;
+            background-color: #222; color: white; padding: 10px 20px;
+        }
+        .responsive-navbar .logo { font-size: 24px; font-weight: bold; }
+        .responsive-navbar .menu { display: flex; gap: 15px; }
+        .responsive-navbar .menu a { color: white; text-decoration: none; }
+        @media (max-width: 600px) {
+            .responsive-navbar { flex-direction: column; align-items: flex-start; }
+            .responsive-navbar .menu { flex-direction: column; width: 100%; }
+            .responsive-navbar .menu a { margin-bottom: 5px; }
+            .responsive-navbar .logo { margin-bottom: 10px; }
+        }
+
+        .card-row-layout { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px; }
+        .card-row-layout .card {
+            flex: 1 1 calc(33.333% - 40px); /* 3 cards per row, account for gap */
+            background-color: #fff; border: 1px solid #ddd; padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        @media (max-width: 768px) {
+            .card-row-layout .card { flex: 1 1 calc(50% - 20px); } /* 2 cards on medium */
+        }
+        @media (max-width: 480px) {
+            .card-row-layout { flex-direction: column; } /* Column on small */
+            .card-row-layout .card { flex: 1 1 100%; } /* Full width */
+        }
+
+        .pricing-section {
+            display: flex; justify-content: space-around; align-items: flex-start;
+            margin-top: 30px; flex-wrap: wrap; gap: 20px;
+        }
+        .pricing-plan {
+            flex: 1 1 280px; /* Basis for 3 plans */
+            border: 1px solid #eee; padding: 25px; text-align: center;
+            background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            max-width: 300px; /* Control max width */
+            display: flex; flex-direction: column; /* Stack content */
+            align-items: center; /* Center items horizontally within plan */
+        }
+        .pricing-plan h3 { color: #007bff; margin-top: 0; }
+        .pricing-plan .price { font-size: 2.5em; font-weight: bold; margin: 10px 0; }
+        .pricing-plan ul { list-style: none; padding: 0; margin: 0 0 20px 0; text-align: left; }
+        .pricing-plan ul li { margin-bottom: 8px; }
+        .pricing-plan button {
+            background-color: #28a745; color: white; padding: 10px 20px;
+            border: none; border-radius: 5px; cursor: pointer;
+            margin-top: auto; /* Push button to bottom */
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Flex-Wrap & Direction</h2>
+    <h3>flex-wrap: wrap</h3>
+    <div class="container wrap-container">
+        <div class="item">1</div><div class="item">2</div><div class="item">3</div><div class="item">4</div>
+        <div class="item">5</div><div class="item">6</div><div class="item">7</div><div class="item">8</div>
+        <div class="item">9</div><div class="item">10</div>
+    </div>
+
+    <h3> flex-wrap: nowrap (observe overflow)</h3>
+    <div class="container nowrap-container">
+        <div class="item">1</div><div class="item">2</div><div class="item">3</div><div class="item">4</div>
+        <div class="item">5</div><div class="item">6</div><div class="item">7</div><div class="item">8</div>
+        <div class="item">9</div><div class="item">10</div>
+    </div>
+
+    <h3>flex-direction: column-reverse with wrapping</h3>
+    <div class="container column-reverse-wrap">
+        <div class="item">A</div><div class="item">B</div><div class="item">C</div><div class="item">D</div>
+        <div class="item">E</div><div class="item">F</div>
+    </div>
+
+    <h3>order (2nd becomes 1st)</h3>
+    <div class="container order-container">
+        <div class="item">First</div><div class="item">Second</div><div class="item">Third</div>
+    </div>
+
+    <h3>flex-grow: 1 (on first item)</h3>
+    <div class="container grow-container">
+        <div class="item">Grow</div><div class="item">Item 2</div><div class="item">Item 3</div>
+    </div>
+
+    <h3>3-column layout (middle twice wide)</h3>
+    <div class="container three-col-layout">
+        <div class="item">Col 1</div><div class="item">Col 2 (2x)</div><div class="item">Col 3</div>
+    </div>
+
+    <h3>flex-basis: 300px (on first item)</h3>
+    <div class="container flex-basis-container">
+        <div class="item">Basis 300px</div><div class="item">Item 2</div><div class="item">Item 3</div>
+    </div>
+
+    <h3>Task 23: flex-shrink: 0 (on 2nd item)</h3>
+    <p>Shrink browser window to observe effect.</p>
+    <div class="container shrink-container">
+        <div class="item">Item 1</div><div class="item">No Shrink</div><div class="item">Item 3</div>
+        <div class="item">Item 4</div><div class="item">Item 5</div>
+    </div>
+
+    <h3>flex: 1 shorthand (all equal width)</h3>
+    <div class="container flex-shorthand-container">
+        <div class="item">Equal 1</div><div class="item">Equal 2</div><div class="item">Equal 3</div>
+    </div>
+
+    <h3>align-self: flex-start (on 2nd item)</h3>
+    <div class="container align-self-container">
+        <div class="item">Default</div><div class="item">Top</div><div class="item">Default</div>
+    </div>
+
+    <h3>Nested Flex (Sidebar Layout)</h3>
+    <div class="nested-flex-sidebar">
+        <div class="sidebar">
+            <h3>Sidebar</h3>
+            <div class="submenu-item">Menu Item 1</div>
+            <div class="submenu-item">Menu Item 2</div>
+            <div class="submenu-item">Menu Item 3</div>
+        </div>
+        <div class="main-content">
+            <h3>Welcome to Your Dashboard</h3>
+            <p>This is the main content section. Resize the window to see the layout adjust using Flexbox.</p>
+            <p>The sidebar is a flex column. The parent layout uses horizontal flex to separate sidebar and content.</p>
+        </div>
+    </div>
+
+    <h3> Responsive Navigation Bar</h3>
+    <nav class="responsive-navbar">
+        <div class="logo">MyBrand</div>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="#">Products</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+
+    <h3>3-Card Layout (Responsive)</h3>
+    <div class="card-row-layout">
+        <div class="card">
+            <h3>Card One</h3>
+            <p>This is the content for card one. It will adjust its width based on screen size.</p>
+        </div>
+        <div class="card">
+            <h3>Card Two</h3>
+            <p>Another card, demonstrating how flex-wrap helps in responsive design.</p>
+        </div>
+        <div class="card">
+            <h3>Card Three</h3>
+            <p>The third card in the set. Try resizing your browser to see the effect.</p>
+        </div>
+    </div>
+
+    <h3> Pricing Section (with flex-start alignment)</h3>
+    <div class="pricing-section">
+        <div class="pricing-plan">
+            <h3>Basic Plan</h3>
+            <div class="price">$9<small>/month</small></div>
+            <ul>
+                <li>&#10003; 5GB Storage</li>
+                <li>&#10003; 1 User</li>
+                <li>&#10007; Phone Support</li>
+            </ul>
+            <button>Choose Plan</button>
+        </div>
+        <div class="pricing-plan">
+            <h3>Pro Plan</h3>
+            <div class="price">$29<small>/month</small></div>
+            <ul>
+                <li>&#10003; 50GB Storage</li>
+                <li>&#10003; 5 Users</li>
+                <li>&#10003; Phone Support</li>
+            </ul>
+            <button>Choose Plan</button>
+        </div>
+        <div class="pricing-plan">
+            <h3>Enterprise Plan</h3>
+            <div class="price">$99<small>/month</small></div>
+            <ul>
+                <li>&#10003; Unlimited Storage</li>
+                <li>&#10003; Unlimited Users</li>
+                <li>&#10003; 24/7 Support</li>
+            </ul>
+            <button>Choose Plan</button>
+        </div>
+    </div>
+</body>
+</html>
