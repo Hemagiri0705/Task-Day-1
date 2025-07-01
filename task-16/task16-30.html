@@ -1,0 +1,179 @@
+<html>
+<head>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+
+    .grid {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .box {
+      background: lightblue;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .g16 { grid-template-columns: repeat(3, 1fr); justify-items: center; }
+    .g17 { grid-template-columns: repeat(3, 1fr); align-items: center; height: 100px; }
+    .g18 { grid-template-columns: repeat(3, 1fr); place-items: center; height: 100px; }
+    .g19 {
+      grid-template-columns: repeat(2, 80px);
+      grid-template-rows: repeat(2, 80px);
+      justify-content: space-around;
+      align-content: center;
+      height: 200px;
+    }
+    .g20 { grid-template-columns: repeat(3, 1fr); justify-items: start; align-items: stretch; height: 150px; }
+
+    .g21 {
+      grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+      grid-template-columns: 1fr 2fr;
+    }
+    .header { grid-area: header; background: lightcoral; }
+    .sidebar { grid-area: sidebar; background: lightgreen; }
+    .main { grid-area: main; background: lightyellow; }
+    .footer { grid-area: footer; background: lightgray; }
+
+    .g24 {
+      grid-template-areas:
+        "nav nav"
+        "sidebar content"
+        "footer footer";
+      grid-template-columns: 1fr 2fr;
+    }
+    .nav { grid-area: nav; background: #ffe0b2; }
+    .content { grid-area: content; background: #b2ebf2; }
+
+    .g25 {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .g26 { grid-template-columns: repeat(4, 1fr); }
+    @media (max-width: 900px) {
+      .g26 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .g26 { grid-template-columns: 1fr; }
+    }
+
+    .g27 { grid-template-columns: repeat(3, 1fr); }
+    .card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #e1bee7;
+      height: 80px;
+    }
+
+    .dashboard {
+      grid-template-areas:
+        "header header"
+        "sidebar content"
+        "footer footer";
+      grid-template-columns: 1fr 2fr;
+      grid-template-rows: auto 1fr auto;
+    }
+
+
+    .magazine {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .featured {
+      grid-column: 1 / span 2;
+      grid-row: 1 / span 2;
+      background: #ffccbc;
+    }
+
+    .calendar {
+      grid-template-columns: repeat(7, 1fr);
+      grid-template-rows: repeat(5, 60px);
+    }
+  </style>
+</head>
+<body>
+
+  <h3>justify-items: center</h3>
+  <div class="grid g16"><div class="box">A</div><div class="box">B</div><div class="box">C</div></div>
+
+  <h3>align-items: center</h3>
+  <div class="grid g17"><div class="box">A</div><div class="box">B</div><div class="box">C</div></div>
+
+  <h3>place-items: center</h3>
+  <div class="grid g18"><div class="box">A</div><div class="box">B</div><div class="box">C</div></div>
+
+  <h3>justify-content & align-content</h3>
+  <div class="grid g19"><div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div>
+  </div>
+
+  <h3>Mixed alignment (start, stretch)</h3>
+  <div class="grid g20"><div class="box">Start</div><div class="box">Stretch</div><div class="box">Stretch</div></div>
+
+  <div class="grid g21">
+    <div class="box header">Header</div>
+    <div class="box sidebar">Sidebar</div>
+    <div class="box main">Main</div>
+    <div class="box footer">Footer</div>
+  </div>
+
+  <h3>Named Grid (nav, content)</h3>
+  <div class="grid g24">
+    <div class="box nav">Nav</div>
+    <div class="box sidebar">Sidebar</div>
+    <div class="box content">Content</div>
+    <div class="box footer">Footer</div>
+  </div>
+
+  <h3>auto-fit + minmax</h3>
+  <div class="grid g25">
+    <div class="box">Box 1</div><div class="box">Box 2</div>
+    <div class="box">Box 3</div><div class="box">Box 4</div>
+  </div>
+
+  <h3>Responsive Product Grid</h3>
+  <div class="grid g26">
+    <div class="box">Item 1</div><div class="box">Item 2</div>
+    <div class="box">Item 3</div><div class="box">Item 4</div>
+  </div>
+
+  <h3>Grid + Flexbox Cards</h3>
+  <div class="grid g27">
+    <div class="card">Card A</div>
+    <div class="card">Card B</div>
+    <div class="card">Card C</div>
+  </div>
+
+  <h3>Dashboard Layout</h3>
+  <div class="grid dashboard">
+    <div class="box header">Header</div>
+    <div class="box sidebar">Sidebar</div>
+    <div class="box main">Content</div>
+    <div class="box footer">Footer</div>
+  </div>
+
+  <h3>Magazine Style</h3>
+  <div class="grid magazine">
+    <div class="box featured">Featured</div>
+    <div class="box">Other 1</div>
+    <div class="box">Other 2</div>
+  </div>
+
+  <h3>Calendar Layout</h3>
+  <div class="grid calendar">
+    <div class="box">1</div><div class="box">2</div><div class="box">3</div><div class="box">4</div>
+    <div class="box">5</div><div class="box">6</div><div class="box">7</div>
+    <div class="box">8</div><div class="box">9</div><div class="box">10</div><div class="box">11</div>
+    <div class="box">12</div><div class="box">13</div><div class="box">14</div>
+    <div class="box">15</div><div class="box">16</div><div class="box">17</div><div class="box">18</div>
+    <div class="box">19</div><div class="box">20</div><div class="box">21</div>
+    <div class="box">22</div><div class="box">23</div><div class="box">24</div><div class="box">25</div>
+    <div class="box">26</div><div class="box">27</div><div class="box">28</div>
+    <div class="box">29</div><div class="box">30</div><div class="box">31</div>
+    <div class="box">--</div><div class="box">--</div><div class="box">--</div><div class="box">--</div>
+  </div>
+</body>
+</html>
