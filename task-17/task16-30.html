@@ -1,0 +1,200 @@
+<html>
+<head>
+    <style>
+        /* General styling for demonstration */
+        body { font-family: sans-serif; padding: 20px; }
+        ul { list-style: none; padding: 0; }
+        li { margin-bottom: 5px; }
+        button { padding: 10px 15px; background-color: #007bff; color: white; border: none; cursor: pointer; position:
+         relative; }
+        .product-card { border: 1px solid #ccc; padding: 20px; margin-top: 20px; position: relative; width: 200px; }
+        h2 { position: relative; display: inline-block; }
+        section { padding: 20px; border: 1px solid #eee; margin-bottom: 10px; }
+        .loading-container { position: relative; width: 100px; height: 100px; margin-top: 20px; }
+        p { margin-top: 15px; line-height: 1.5; }
+        blockquote { border-left: 5px solid #ddd; padding-left: 10px; margin-top: 15px; }
+        a { text-decoration: none; color: blue; position: relative; display: inline-block; }
+
+        li::before { content: "★ "; color: gold; }
+
+        blockquote::before { content: '“'; margin-right: 5px; font-size: 1.2em; font-weight: bold; }
+        blockquote::after { content: '”'; margin-left: 5px; font-size: 1.2em; font-weight: bold; }
+
+        button::before { content: "🔍 "; }
+
+        .product-card::before, .product-card::after {
+            content: "NEW!";
+            position: absolute;
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            font-size: 0.8em;
+            font-weight: bold;
+            top: 10px;
+            right: -20px; /* Adjust as needed */
+            transform: rotate(45deg);
+            transform-origin: 0% 0%;
+            z-index: 1;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        }
+        .product-card::after {
+            content: "SALE"; /* Just for demonstration of multiple badges */
+            background-color: green;
+            right: 10px; /* Adjust for overlap */
+            top: 40px;
+            transform: rotate(15deg); /* Different angle */
+        }
+
+        h2::after {
+            content: "new";
+            background-color: purple;
+            color: white;
+            font-size: 0.6em;
+            padding: 3px 6px;
+            border-radius: 3px;
+            position: absolute;
+            top: -5px;
+            right: -30px;
+        }
+
+        section + section::after {
+            content: "";
+            display: block;
+            border-bottom: 1px dashed #ccc;
+            margin: 20px 0;
+        }
+
+        .loading-container::before {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        p.first-line-style::first-line {
+            font-weight: bold;
+            color: blue;
+        }
+
+        p.first-letter-enlarge::first-letter {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        p.drop-cap::first-letter {
+            font-size: 3em;
+            float: left;
+            line-height: 1;
+            margin-right: 5px;
+            color: #d1410c;
+        }
+
+        blockquote.highlight-first-line::first-line {
+            background-color: yellow;
+        }
+
+        .hover-star::before { content: "★ "; color: gray; }
+        .hover-star:hover::before { color: orange; }
+
+        .hint-link::after {
+            content: " (hover to see more)";
+            font-size: 0.8em;
+            color: #555;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .hint-link:hover::after {
+            opacity: 1;
+        }
+
+        .animated-underline::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: -3px;
+            left: 0;
+            background-color: red;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        .animated-underline:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        p.enlarge-on-hover::first-letter {
+            font-size: 1.5em;
+            transition: font-size 0.3s ease;
+            display: inline-block; /* Required for transform on first-letter */
+        }
+        p.enlarge-on-hover:hover::first-letter {
+            font-size: 2.5em;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Pseudo-elements Tasks</h1>
+
+    <h2>::before and ::after</h2>
+    <ul>
+        <li>List Item 1</li>
+        <li>List Item 2</li>
+    </ul>
+
+    <button>Click Me</button>
+
+    <div class="product-card">
+        <h3>Product Title</h3>
+        <p>This is a description of the product.</p>
+    </div>
+
+    <h2>A Heading <span class="new-tag"></span></h2>
+
+    <section>
+        <h3>Section One</h3>
+        <p>Content of the first section.</p>
+    </section>
+    <section>
+        <h3>Section Two</h3>
+        <p>Content of the second section.</p>
+    </section>
+
+    <div class="loading-container"></div>
+
+    <h2>::first-line and ::first-letter</h2>
+    <p class="first-line-style">It demonstrates how ::first-line works on a block of text.</p>
+
+    <p class="first-letter-enlarge">Another paragraph to show the effect of enlarging the first letter only. .</p>
+
+    <p class="drop-cap">It will demonstrate a classic magazine-style drop cap effect. The first letter will be much
+         larger and float to the left, allowing the rest of the text to wrap around it beautifully.</p>
+
+    <blockquote class="highlight-first-line">blockquote where the very first line of the quotation should be highlighted 
+        with a background color. This highlights a specific part of the cited text.</blockquote>
+
+    <h2>Combining Pseudo-classes & Pseudo-elements</h2>
+    <p class="hover-star">Hover over this text to see the star change color.</p>
+
+    <p><a href="https://myaadhaar.uidai.gov.in/" class="hint-link">Link with hint</a></p>
+
+    <p><a href="https://www.hotstar.com/" class="animated-underline">Underline Me</a></p>
+
+    <p class="enlarge-on-hover"> first letter will enlarge when you hover anywhere over this text. 
+        Observe the transformation of the initial character.</p>
+</body>
+</html>

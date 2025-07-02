@@ -1,0 +1,108 @@
+<html>
+<head>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        section { margin-bottom: 25px; padding: 15px; border: 1px solid #eee; border-radius: 5px; }
+        h2 { margin-top: 0; color: #333; }
+
+        .btn-hover { background-color: blue; color: white; padding: 8px 15px; border: none; cursor: pointer; 
+        transition: background-color 0.3s; }
+        .btn-hover:hover { background-color: darkblue; }
+
+        .nav-menu a { margin-right: 15px; text-decoration: none; color: black; transition: color 0.3s; }
+        .nav-menu a:hover { color: green; }
+
+        .tooltip-container { position: relative; display: inline-block; border-bottom: 1px dotted gray; cursor: help; }
+        .tooltip-text { visibility: hidden; opacity: 0; width: 120px; background-color: #555; color: #fff; 
+        text-align: center; border-radius: 4px; padding: 4px 0; position: absolute; z-index: 1; bottom: 120%; left: 50%;
+         margin-left: -60px; transition: opacity 0.3s; }
+        .tooltip-container:hover .tooltip-text { visibility: visible; opacity: 1; }
+
+        .card-scale { width: 150px; padding: 10px; border: 1px solid #ccc; box-shadow: 1px 1px 5px rgba(0,0,0,0.1); 
+        text-align: center; transition: transform 0.3s; display: inline-block; margin: 10px; }
+        .card-scale:hover { transform: scale(1.05); } /* Reduced scale for brevity */
+
+        .link-underline { position: relative; text-decoration: none; color: blue; padding-bottom: 2px; }
+        .link-underline::after { content: ''; position: absolute; width: 0; height: 1px; bottom: 0; left: 0;
+         background-color: blue; transition: width 0.3s ease; }
+        .link-underline:hover::after { width: 100%; }
+
+        .input-focus { border: 1px solid #ccc; padding: 6px; transition: border-color 0.3s, background-color 0.3s, 
+         box-shadow 0.3s; }
+        .input-focus:focus { border-color: blue; background-color: #e6f7ff; 
+            box-shadow: 0 0 5px rgba(0, 128, 255, 0.5); outline: none; }
+        textarea.input-focus { width: 200px; height: 60px; vertical-align: top; }
+
+        .btn-active { background-color: green; color: white; padding: 8px 15px; border: none; cursor: pointer; 
+            transition: transform 0.1s; }
+        .btn-active:active { transform: scale(0.98); }
+        .link-active { color: blue; text-decoration: none; transition: color 0.1s; margin-left: 15px; }
+        .link-active:active { color: red; }
+
+        /* Task 11, 12: Visited links */
+        .link-visited:visited { color: grey; } /* Limited styling on visited links */
+
+        .striped-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .striped-table th, .striped-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        .striped-table tbody tr:nth-child(odd) { background-color: #f2f2f2; }
+        .striped-table tbody tr:nth-child(even) { background-color: #ffffff; }
+
+        .my-list li:first-child { font-weight: bold; color: darkblue; }
+
+        .section-content p:last-child { font-weight: bold; color: purple; }
+    </style>
+</head>
+<body>
+
+    <section>
+        <h2>Hover Effects</h2>
+        <button class="btn-hover">Hover Button (T1)</button>
+        <nav class="nav-menu">
+            <a href="#">Home (T2)</a><a href="#">About (T2)</a>
+        </nav>
+        <div class="tooltip-container">Hover me (T3)<span class="tooltip-text">Tooltip text!</span></div>
+        <div class="card-scale">Card (T4)</div>
+        <a href="https://www.mysql.com/" class="link-underline">Animate Underline (T5)</a>
+    </section>
+
+    <section>
+        <h2>Focus Effects</h2>
+        <input type="text" class="input-focus" placeholder="Input Focus (T6, T8)"><br><br>
+        <textarea class="input-focus" placeholder="Textarea Focus (T7)"></textarea>
+    </section>
+
+    <section>
+        <h2>Active Effect</h2>
+        <button class="btn-active">Shrink Button (T9)</button>
+        <a href="https://www.wikipedia.org/" class="link-active">Click Link (T10)</a>
+    </section>
+
+    <section>
+        <h2>Visited & Others</h2>
+        <p>
+            <a href="https://www.myntra.com/" class="link-visited">myntra(T11, T12)</a> (try opening)
+            <a href="https://sports.ndtv.com/" class="link-visited">Unvisited (T11, T12)</a>
+        </p>
+        <ul class="my-list">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <div class="section-content">
+         <p><strong>Inception</strong> is a mind-bending science fiction thriller directed by Christopher Nolan. </p>
+         <p>The film stars Leonardo DiCaprio as a skilled thief who steals information by infiltrating people's dreams.</p>
+         <p>The movie’s layered narrative, stunning visuals, and emotional depth make it a cinematic masterpiece </p>
+  </div>
+
+        </div>
+        <table class="striped-table">
+            <thead><tr><th>Col A</th><th>Col B</th></tr></thead>
+            <tbody>
+                <tr><td>Row 1</td><td>Data</td></tr>
+                <tr><td>Row 2</td><td>Data</td></tr>
+                <tr><td>Row 3</td><td>Data</td></tr>
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>
