@@ -1,0 +1,65 @@
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; flex-direction: column; align-items: center; gap: 20px; 
+            padding: 20px; background-color: #f4f4f4; }
+        div { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; width: 80%; text-align: center; }
+
+        .t1 { padding: 10px 20px; background-color: #007bff; color: white; border: none; 
+            transition: background-color 0.3s ease; }
+        .t1:hover { background-color: #0056b3; }
+
+        .t2 { width: 80px; height: 80px; background-color: #28a745; display: flex; justify-content: center; 
+            align-items: center; color: white; transition: transform 0.3s ease; }
+        .t2:hover { transform: scale(1.2); }
+
+        .t3 { width: 180px; padding: 15px; background-color: #fff; border-radius: 8px; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: box-shadow 0.3s ease; }
+        .t3:hover { box-shadow: 0 8px 16px rgba(0,0,0,0.2); }
+
+        .t4 { padding: 10px 20px; background-color: #ffc107; color: #333; border: none; 
+            transition: padding 0.3s ease; }
+        .t4:hover { padding: 15px 30px; }
+
+        .t5 { width: 120px; height: auto; transition: transform 0.3s ease; }
+        .t5:hover { transform: rotate(10deg); }
+
+        .t6 { color: #007bff; text-decoration: none; position: relative; padding-bottom: 2px; }
+        .t6::after { content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 2px; 
+        background-color: #007bff; transition: width 0.3s ease; }
+        .t6:hover::after { width: 100%; }
+
+        .t7 { width: 100px; height: 50px; background-color: #17a2b8; color: white; display: flex; 
+            justify-content: center; align-items: center; transition: background-color 0.4s ease, color 0.4s ease, 
+            transform 0.4s ease; }
+        .t7:hover { background-color: #0056b3; color: #ffebcd; transform: translateY(-5px); }
+
+        .t8 ul { list-style: none; padding: 0; display: flex; gap: 10px; }
+        .t8 a { display: block; padding: 8px 12px; background-color: #6c757d; color: white; text-decoration: none;
+             transition: background-color 0.3s ease, color 0.3s ease; }
+        .t8 a:hover { background-color: #495057; color: #ffdd55; }
+
+        .t9 { width: 70px; height: 70px; background-color: #dc3545; display: flex; justify-content: center; 
+            align-items: center; color: white; transition: background-color 0.3s ease; transition-delay: 0.5s; }
+        .t9:hover { background-color: #a71d2a; }
+
+        .t10 { width: 90px; height: 40px; background-color: #6f42c1; display: flex; justify-content: center; 
+            align-items: center; color: white; overflow: hidden; transition: width 1s ease; }
+        .t10:hover { width: 220px; }
+    </style>
+</head>
+<body>
+    <div><h3>Button color</h3><button class="t1">Hover Me</button></div>
+    <div><h3>Box scales</h3><div class="t2">Scale</div></div>
+    <div><h3>Card box-shadow</h3><div class="t3"><h4>Card</h4><p>This is a simple card. Hover to see the shadow effect.
+
+    </p></div></div>
+    <div><h3>Button padding</h3><button class="t4">Padding Btn</button></div>
+    <div><h3>Image rotates</h3><img class="t5" src="https://wallpaperaccess.com/full/1907050.jpg" alt="Image"></div>
+    <div><h3>Link underline</h3><a href="https://www.netflix.com/" class="t6">Link Underline</a></div>
+    <div><h3>Multi-property</h3><div class="t7">Multi-Trans</div></div>
+    <div class="t8"><h3>Menu colors</h3><ul><li><a href="#">Home</a></li><li><a href="#">About</a></li></ul></div>
+    <div><h3> Hover with delay</h3><div class="t9">Delay</div></div>
+    <div><h3>Div expands width</h3><div class="t10">Expand Me</div></div>
+</body>
+</html>

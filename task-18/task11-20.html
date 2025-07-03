@@ -1,0 +1,237 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            padding: 20px;
+            align-items: flex-start;
+        }
+
+        .section-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .ball-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+        }
+        .bouncing-ball {
+            width: 30px;
+            height: 30px;
+            background-color: orangered;
+            border-radius: 50%;
+            position: absolute;
+            left: 35px;
+            animation: bounce 2s infinite alternate;
+        }
+        @keyframes bounce {
+            0% { top: 0; }
+            100% { top: 70px; }
+        }
+
+        .moving-box {
+            width: 50px;
+            height: 50px;
+            background-color: green;
+            position: relative;
+            animation: moveBox 3s infinite alternate;
+        }
+        @keyframes moveBox {
+            0% { left: 0; }
+            100% { left: 300px; }
+        }
+
+        .pulsing-circle {
+            width: 60px;
+            height: 60px;
+            background-color: purple;
+            border-radius: 50%;
+            animation: pulse 1.5s infinite alternate;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.2); }
+        }
+
+        .fade-in-text {
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .spinning-logo {
+            width: 70px;
+            height: 70px;
+            background-color: orange;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: white;
+            animation: spin 3s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loader-container {
+            display: flex;
+            gap: 10px;
+            height: 20px;
+        }
+        .loader-dot {
+            width: 10px;
+            height: 10px;
+            background-color: grey;
+            border-radius: 50%;
+            animation: dotFade 1.2s infinite;
+        }
+        .loader-dot:nth-child(1) { animation-delay: 0s; }
+        .loader-dot:nth-child(2) { animation-delay: 0.4s; }
+        .loader-dot:nth-child(3) { animation-delay: 0.8s; }
+        @keyframes dotFade {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .color-changing-div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            animation: changeColor 5s infinite alternate;
+        }
+        @keyframes changeColor {
+            0% { background-color: red; }
+            25% { background-color: blue; }
+            50% { background-color: green; }
+            75% { background-color: purple; }
+            100% { background-color: red; }
+        }
+
+        .slide-text {
+            position: relative;
+            top: -50px; /* Start above view */
+            animation: slideIn 1.5s forwards;
+            font-size: 1.2em;
+            color: #333;
+        }
+        @keyframes slideIn {
+            0% { top: -50px; opacity: 0; }
+            100% { top: 0; opacity: 1; }
+        }
+
+        .shake-element {
+            width: 100px;
+            height: 50px;
+            background-color: lightcoral;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .shake-element:hover {
+            animation: shake 0.5s ease-in-out infinite;
+        }
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        .card-flip-container {
+            perspective: 1000px;
+            width: 150px;
+            height: 200px;
+            cursor: pointer;
+        }
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+        .card-flip-container:hover .card {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .card-front {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        .card-back {
+            background-color: #333;
+            color: white;
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Task 11: Create a bouncing ball</h3>
+    <div class="ball-container">
+        <div class="bouncing-ball"></div>
+    </div>
+
+    <h3>Animate a box moving from left to right (left: 0 → 300px).</h3>
+    <div class="moving-box"></div>
+
+    <h3>Make a pulsing circle using transform: scale() inside @keyframes.</h3>
+    <div class="pulsing-circle"></div>
+
+    <h3>Create a fading-in effect with opacity: 0 → 1.</h3>
+    <p class="fade-in-text">This text fades in.</p>
+
+    <h3>Animate a spinning logo using transform: rotate(360deg).</h3>
+    <div class="spinning-logo">LOGO</div>
+
+    <h3> Build a loader animation with three dots appearing in sequence.</h3>
+    <div class="loader-container">
+        <div class="loader-dot"></div>
+        <div class="loader-dot"></div>
+        <div class="loader-dot"></div>
+    </div>
+
+    <h3> Animate a div to change background color infinitely.</h3>
+    <div class="color-changing-div"></div>
+
+    <h3>Slide a text from top to center on page load.</h3>
+    <p class="slide-text">This text slides in from the top.</p>
+
+    <h3>Create a "shake" effect using keyframes and translateX.</h3>
+    <div class="shake-element">Hover to Shake</div>
+
+    <h3> Make a card flip animation using transform: rotateY() with keyframes.</h3>
+    <div class="card-flip-container">
+        <div class="card">
+            <div class="card-front">Front</div>
+            <div class="card-back">Back</div>
+        </div>
+    </div>
+</body>
+</html>

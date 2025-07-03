@@ -1,0 +1,149 @@
+<html>
+<head>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; gap: 30px; padding: 20px; 
+            align-items: flex-start; }
+        .section-title { font-size: 1.5em; font-weight: bold; margin-bottom: 15px; }
+        div[class^="task-"] { border: 1px solid #eee; padding: 10px; margin-bottom: 15px; width: 300px; }
+
+        .task-21-element {
+            width: 80px; height: 80px; background-color: aqua; position: relative;
+            animation: moveRotate 4s infinite alternate, fadeScale 4s infinite alternate;
+        }
+        @keyframes moveRotate { 0% { left: 0; transform: rotate(0deg); } 100% { left: 200px; transform: rotate(360deg); } }
+        @keyframes fadeScale { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } 100% 
+        { opacity: 1; transform: scale(1); } }
+
+        .task-22-element {
+            width: 50px; height: 50px; background-color: darkgreen;
+            animation: fadeInScale 2s forwards;
+            animation-delay: 2s; /* Starts after 2 seconds */
+            opacity: 0; /* Hidden initially */
+        }
+        @keyframes fadeInScale { 0% { opacity: 0; transform: scale(0.5); } 100% { opacity: 1; transform: scale(1); } }
+
+        .task-23-alert {
+            width: 250px; padding: 15px; background-color: #ede3d4; color: #155724; border: 1px solid #c3e6cb;
+            opacity: 0; transform: translateY(-50px);
+            animation: alertShow 1s forwards;
+            animation-delay: 0.5s;
+        }
+        @keyframes alertShow {
+            0% { opacity: 0; transform: translateY(-50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .task-24-marquee-container {
+            width: 100%; overflow: hidden; white-space: nowrap; border: 1px solid #ccc;
+        }
+        .task-24-marquee-text {
+            display: inline-block; padding-left: 100%;
+            animation: marquee 10s linear infinite;
+        }
+        @keyframes marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-100%); } }
+
+        .task-25-typing-text {
+            width: 0; overflow: hidden; white-space: nowrap; border-right: 2px solid;
+            animation: typing 3s steps(30, end) forwards, blink-caret .75s step-end infinite;
+        }
+        @keyframes typing { from { width: 0; } to { width: 100%; } }
+        @keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: black; } }
+
+        .task-26-progress-bar-container { width: 200px; height: 20px; background-color: #eee; border-radius: 10px; 
+            overflow: hidden; }
+        .task-26-progress-bar-fill {
+            width: 0; height: 100%; background-color: chocolate; border-radius: 10px;
+            animation: fillProgress 3s forwards;
+        }
+        @keyframes fillProgress { 0% { width: 0; } 100% { width: 100%; } }
+
+        .task-27-hover-bg {
+            width: 100px; height: 50px; background-color: lightblue; cursor: pointer;
+            transition: background-color 0.3s; /* Smooth transition for initial hover */
+        }
+        .task-27-hover-bg:hover {
+            animation: changeBgOnce 0.8s forwards;
+        }
+        @keyframes changeBgOnce { 0% { background-color: lightblue; } 100% { background-color: hotpink; } }
+
+        .task-28-alternate-motion {
+            width: 50px; height: 50px; background-color: darkorange; position: relative;
+            animation: moveAlternate 3s infinite alternate;
+        }
+        @keyframes moveAlternate { 0% { left: 0; } 100% { left: 150px; } }
+
+        .task-29-hover-trigger {
+            width: 70px; height: 70px; background-color: indigo; border-radius: 50%;
+            transition: transform 0.3s; /* For smooth reset when hover ends */
+        }
+        .task-29-hover-trigger:hover {
+            animation: bounceOnHover 0.6s ease-in-out forwards;
+        }
+        @keyframes bounceOnHover {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .task-30-grid-container {
+            display: grid; grid-template-columns: repeat(3, 50px); gap: 10px;
+        }
+        .task-30-grid-item {
+            width: 50px; height: 50px; background-color: teal; opacity: 0;
+            animation: fadeInSlideUp 0.6s forwards;
+        }
+        .task-30-grid-item:nth-child(1) { animation-delay: 0s; }
+        .task-30-grid-item:nth-child(2) { animation-delay: 0.1s; }
+        .task-30-grid-item:nth-child(3) { animation-delay: 0.2s; }
+        .task-30-grid-item:nth-child(4) { animation-delay: 0.3s; }
+        .task-30-grid-item:nth-child(5) { animation-delay: 0.4s; }
+        .task-30-grid-item:nth-child(6) { animation-delay: 0.5s; }
+        @keyframes fadeInSlideUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Combine multiple keyframe animations on the same element.</h3>
+    <div class="task-21-element"></div>
+
+    <h3>Add animation-delay to start the animation after 2 seconds.</h3>
+    <div class="task-22-element"></div>
+
+    <h3> Create an alert box that fades in and slides down on page load.</h3>
+    <div class="task-23-alert">This is an alert message!</div>
+
+    <h3>Make a continuous marquee effect using keyframes (left → right loop).</h3>
+    <div class="task-24-marquee-container">
+        <span class="task-24-marquee-text">This is a continuous scrolling marquee text. Lorem ipsum dolor sit amet.</span>
+    </div>
+
+    <h3>Create a "typing" effect using width + overflow: hidden and keyframes.</h3>
+    <p class="task-25-typing-text">This text will appear as if typed.</p>
+
+    <h3> Make a progress bar fill up using width animation.</h3>
+    <div class="task-26-progress-bar-container">
+        <div class="task-26-progress-bar-fill"></div>
+    </div>
+
+    <h3> Animate background color on hover using keyframes (on hover → play once).</h3>
+    <div class="task-27-hover-bg">Hover Me</div>
+
+    <h3>Use animation-direction: alternate to make a back-and-forth motion.</h3>
+    <div class="task-28-alternate-motion"></div>
+
+    <h3>Combine animation with :hover to trigger keyframe on hover.</h3>
+    <div class="task-29-hover-trigger">Hover</div>
+
+    <h3>Animate multiple elements (e.g., grid items) with staggered delays.</h3>
+    <div class="task-30-grid-container">
+        <div class="task-30-grid-item"></div>
+        <div class="task-30-grid-item"></div>
+        <div class="task-30-grid-item"></div>
+        <div class="task-30-grid-item"></div>
+        <div class="task-30-grid-item"></div>
+        <div class="task-30-grid-item"></div>
+    </div>
+</body>
+</html>
