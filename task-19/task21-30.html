@@ -1,0 +1,74 @@
+<html>
+<head>
+    <style>
+        /* 21, 30: Define :root vars; 30: --font-scale for body */
+        :root {
+            --prm: #007bff; --fbase: 16px; --fscale: 1; /* 21, 30 */
+            --hfsize: 2.5em; /* 22 */
+            --bpadd: 12px 25px; --brad: 8px; --bcol: #fff; /* 23 */
+            --secsp: 30px; /* 24 */
+            --cgap: 25px; --cbg: #fff; --cshd: 0 6px 15px rgba(0,0,0,.1); /* 28 */
+            --cwidth: 1200px; --spadd: 20px; /* 29 */
+            --bbg: #f4f7f6; --tcol: #333; --sbg: #fff; --sshd: 0 4px 8px rgba(0,0,0,.05); /* 26 */
+        }
+        body { font-family: sans-serif; font-size: calc(var(--fbase) * var(--fscale)); color: var(--tcol); 
+        background: var(--bbg); margin: 0; line-height: 1.6; }
+        header { background: var(--prm); color: var(--bcol); padding: var(--secsp) 0; text-align: center; }
+        h1 { font-size: var(--hfsize); margin: 0; } /* 22 */
+        .container { max-width: var(--cwidth); margin: 0 auto; padding: 0 var(--spadd); } /* 29 */
+        section { padding: var(--secsp); margin-top: var(--secsp); background: var(--sbg); border-radius: var(--brad); 
+            box-shadow: var(--sshd); } /* 24 */
+
+        .responsive-btn { padding: var(--bpadd); border-radius: var(--brad); background: var(--prm); color: var(--bcol); 
+            border: none; cursor: pointer; font-size: calc(var(--fbase) * 1.1); display: inline-block; margin-top: 20px; }
+
+        .dark-theme { background: #2c3e50; color: #ecf0f1; box-shadow: 0 6px 15px rgba(0,0,0,.25); 
+            --prm: #89cff0; }
+        .dark-theme h2 { color: var(--prm); }
+
+        @media (prefers-color-scheme: dark) {
+            :root { --bbg: #1a1a2e; --tcol: #e0e0e0; --prm: #87ceeb; --sbg: #2a2a4a; --sshd: 
+                0 4px 8px rgba(0,0,0,.2); --cbg: #3a3a5a; --cshd: 0 6px 15px rgba(0,0,0,.35); }
+            header { background: #3f4f6b; } .dark-theme { background: #1f2a38; color: #f0f0f0; --prm: #b0e0e6; }
+        }
+
+        .cards-wrapper { display: flex; flex-wrap: wrap; gap: var(--cgap); justify-content: center; 
+            margin-top: var(--secsp); margin-bottom: var(--secsp); }
+        .card { flex: 1; min-width: 280px; max-width: calc(33.333% - (2 * var(--cgap) / 3)); background: var(--cbg); 
+            padding: calc(var(--secsp) / 1.5); border-radius: var(--brad); box-shadow: var(--cshd); text-align: center; box-sizing: border-box; }
+
+        footer { text-align: center; padding: calc(var(--secsp) / 2); background: #e9ecef; color: #555; 
+            margin-top: var(--secsp); }
+
+        /* Media Queries for Responsiveness (22, 30: Scaling; 23: Button; 29: Layout) */
+        @media (max-width: 768px) {
+            :root { --hfsize: 1.8em; --fscale: 0.9; --bpadd: 8px 18px; --secsp: 20px; --cgap: 15px; --spadd: 15px; }
+            .responsive-btn { width: 100%; display: block; text-align: center; }
+            .card { max-width: 100%; }
+        }
+        @media (max-width: 480px) {
+            :root { --hfsize: 1.5em; --fscale: 0.85; --bpadd: 6px 12px; --secsp: 15px; --spadd: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <header><h1>CSS Variables & Responsive Design</h1></header>
+    <div class="container">
+        <section>
+            <h2>General Section Example</h2>
+            <p>This section uses global spacing and font settings.</p>
+            <button class="responsive-btn">Click Here</button>
+        </section>
+        <section class="dark-theme">
+            <h2>Dark Theme Section</h2>
+            <p>This section demonstrates a local primary color override.</p>
+        </section>
+        <div class="cards-wrapper">
+            <div class="card"><h3>Item 1</h3><p>Card content.</p></div>
+            <div class="card"><h3>Item 2</h3><p>Another card.</p></div>
+            <div class="card"><h3>Item 3</h3><p>Last card.</p></div>
+        </div>
+    </div>
+    <footer><p>Demo &copy; 2025</p></footer>
+</body>
+</html>

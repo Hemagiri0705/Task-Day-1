@@ -1,0 +1,178 @@
+<html>
+<head>
+    <style>
+        /* Global styles for demonstration */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .px-container {
+            font-size: 20px; /* Base for em */
+            background-color: #e0f7fa;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .px-container p {
+            font-size: 1.5em; /* Scales based on parent's font-size */
+            margin: 0;
+        }
+
+        .layout-container {
+            width: 90%;
+            margin: 0 auto 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 5vw; /* Scales with viewport width */
+            text-align: center;
+            color: #00796b;
+            margin-bottom: 20px;
+        }
+
+        .full-height-section {
+            height: 100vh; /* Takes full viewport height */
+            background-color: #c8e6c9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #1b5e20;
+            margin-bottom: 20px;
+        }
+
+        .min-height-section {
+            min-height: 100vh; /* Minimum full viewport height */
+            background-color: #bbdefb;
+            display: flex;
+            flex-direction: column; /* To stack content vertically */
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #0d47a1;
+            padding: 20px 0; /* Add some padding if content overflows */
+        }
+
+        .card-layout {
+            background-color: #ffecb3;
+            padding: 2rem; /* Scales with root font-size */
+            margin: 5%; /* Relative to parent's width */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .responsive-image-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .responsive-image-container img {
+            width: 80%; /* Relative to parent container */
+            max-width: 600px; /* Optional: prevent image from getting too large */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Remove extra space below image */
+            margin: 0 auto; /* Center the image */
+            border: 1px solid #ddd;
+        }
+
+        .line-height-paragraph {
+            line-height: 1.5em; /* Scales with font-size of the paragraph */
+            background-color: #fce4ec;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .button-section {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 16px; /* Base font-size for button scaling */
+        }
+        .button-section button {
+            padding: 1em 2em; /* Scales with button's font-size */
+            font-size: 1em; /* Can be adjusted to scale the button */
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button-section button:hover {
+            background-color: #fb8c00;
+        }
+
+        .main-wrapper {
+            max-width: 1200px;
+            margin: 0 auto; /* Centers the wrapper */
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
+        }
+
+        /* Responsive adjustments for smaller screens (optional, but good practice) */
+        @media (max-width: 768px) {
+            .layout-container, .card-layout {
+                padding: 15px;
+            }
+            .card-layout {
+                margin: 3%;
+            }
+        }
+    </style>
+</head>
+<body>
+        <div class="px-container">
+            <p>font-size is 1.5em, nested in a 20px container. Observe scaling.</p>
+        </div>
+
+        <div class="layout-container">
+            <h2>Layout Container (90% width, centered)</h2>
+            <p>This container has a width of 90% and is centered using margin: 0 auto.</p>
+        </div>
+
+        <h1 class="vw-heading">Heading with 5vw Font-Size</h1>
+
+        <div class="full-height-section">
+            <p>This section uses height: 100vh to be full viewport height.</p>
+        </div>
+
+        <div class="min-height-section">
+            <p>This section uses min-height: 100vh and display: flex to center its content. Try adding more content to see
+                 it grow beyond 100vh if needed.</p>
+            <p>Responsive design allows websites to adapt to different screen sizes and devices, ensuring a consistent 
+                user experience.</p>
+
+        </div>
+
+        <div class="card-layout">
+            <h3>Card Layout</h3>
+            <p>This card has padding: 2rem and margin: 5%. Observe how the spacing adapts.</p>
+        </div>
+
+        <div class="responsive-image-container">
+            <img src="https://tse1.mm.bing.net/th/id/OIP.1E9QtAuSpPSPUiUgoFt27wHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+            alt="Placeholder Image">
+            <p>Image with width: 80% to be responsive.</p>
+        </div>
+
+        <div class="layout-container line-height-paragraph">
+            <p>This paragraph demonstrates line-height: 1.5em. Notice how it affects the spacing between lines, 
+                improving readability for longer texts. This unit is relative to the font-size of the element itself.</p>
+        </div>
+
+        <div class="button-section">
+            <button>Click Me (Padding: 1em 2em)</button>
+            <p>The button's padding scales with its font-size.</p>
+        </div>
+
+        <div style="text-align: center; padding-top: 20px;">
+            <p>End of demonstration.</p>
+        </div>
+    </div>
+</body>
+</html>

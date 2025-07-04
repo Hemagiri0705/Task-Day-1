@@ -1,0 +1,127 @@
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; box-sizing: border-box; background-color: #f4f4f4;
+         }
+        section { margin: 20px; padding: 20px; background-color: white; border-radius: 8px; 
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #333; margin-bottom: 20px; }
+
+        .layout-container { display: flex; flex-wrap: wrap; gap: 20px; }
+        .col { flex: 1; min-width: 300px; padding: 15px; border: 1px solid #eee; background-color: #fdfdfd; }
+        @media (max-width: 768px) { .layout-container { flex-direction: column; } }
+
+        @media (max-width: 480px) { body { font-size: 1.1em; } }
+
+        .hidden-img { max-width: 100%; height: auto; display: block; margin-top: 15px; }
+        @media (max-width: 600px) { .hidden-img { display: none; } }
+
+        nav { background-color: #333; padding: 1rem; display: flex; justify-content: space-between; align-items: center;
+         color: white; }
+        nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
+        nav ul li a { color: white; text-decoration: none; margin-left: 20px; }
+        @media (max-width: 600px) {
+            nav { flex-direction: column; align-items: flex-start; }
+            nav ul { flex-direction: column; width: 100%; }
+            nav ul li { margin: 10px 0; }
+        }
+
+        .bg-color-section { background-color: #007bff; color: white; text-align: center; } /* Desktop */
+        @media (max-width: 992px) { .bg-color-section { background-color: #ffc107; } } /* Tablet */
+        @media (max-width: 768px) { .bg-color-section { background-color: #dc3545; } } /* Mobile */
+
+        .adjust-img { max-width: 90%; height: auto; display: block; margin: 0 auto; }
+        @media (max-width: 768px) { .adjust-img { max-width: 98%; } }
+
+        /* Task 17: Change card layout from row to column below 992px */
+        .card-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        .card { flex: 1; min-width: 280px; padding: 15px; border: 1px solid #ddd; background-color: #fefefe; 
+                box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+        @media (max-width: 992px) {
+            .card-container { flex-direction: column; align-items: center; }
+            .card { width: 90%; max-width: 400px; }
+        }
+
+        .pad-mar-section { border: 1px dashed #6c757d; }
+        @media (max-width: 768px) { .pad-mar-section { padding: 10px; margin: 10px; } }
+
+        .heading-section h2 { font-size: 2em; }
+        @media (max-width: 480px) { .heading-section h2 { font-size: 1.5em; } }
+
+        .flex-direction-section .flex-container { display: flex; justify-content: space-around; 
+                                                   background-color: #e9f7f7; padding: 15px; border-radius: 5px; }
+        .flex-item { background-color: #d1ecf1; padding: 10px 20px; border: 1px solid #bee5eb; }
+        @media (max-width: 768px) { .flex-direction-section .flex-container { flex-direction: column; align-items: center;
+                                        } }
+    </style>
+</head>
+<body>
+      <section class="layout-container">
+        <div class="col">
+            <h2>Two-Column Layout</h2>
+            <p>This column sits next to its partner on larger screens.</p>
+            <img src="https://i.pinimg.com/originals/40/49/f2/4049f286a72c22f36c827362c92a7ef6.jpg"
+                alt="Sample Image" class="hidden-img">
+            <p>The image above (150x100) and hides below 600px.</p>
+        </div>
+        <div class="col">
+            <h2>Responsive Content</h2>
+            <p>This column will stack below the first one when the screen width drops below 768px.</p>
+            <p>Also, the body text size will increase on very small mobile screens (<480px).</p>
+        </div>
+    </section>
+    <nav>
+        <span>My Website</span>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="bg-color-section">
+        <h2> Background Color</h2>
+        <p>This section changes color: Blue (desktop), Yellow (tablet <992px), Red (mobile <768px).</p>
+    </section>
+
+    <section>
+        <h2>Adjust Image Sizes</h2>
+        <img src="https://static1.moviewebimages.com/wordpress/wp-content/uploads/sharedimages/2024/11/image005.jpg"
+         alt="Adjustable Image" class="adjust-img">
+        <p style="text-align: center;">This image will scale proportionally, becoming slightly larger relative 
+            to the viewport on smaller screens.</p>
+    </section>
+
+    <section>
+        <h2>Card Layout</h2>
+        <div class="card-container">
+            <div class="card"><h3>Card A</h3><p>Info for Card A.</p></div>
+            <div class="card"><h3>Card B</h3><p>Info for Card B.</p></div>
+            <div class="card"><h3>Card C</h3><p>Info for Card C.</p></div>
+        </div>
+        <p style="text-align: center;">These cards will arrange in a row on wide screens and stack vertically below 992px.
+
+        </p>
+    </section>
+
+    <section class="pad-mar-section">
+        <h2>Padding/Margin</h2>
+        <p>This section has reduced padding and margin on mobile devices (below 768px).</p>
+    </section>
+
+    <section class="heading-section">
+        <h2> Heading Font Size</h2>
+        <p style="text-align: center;">This heading's font size will shrink on very narrow screens (below 480px).</p>
+    </section>
+
+    <section class="flex-direction-section">
+        <h2>Flex Direction</h2>
+        <div class="flex-container">
+            <div class="flex-item">Item One</div>
+            <div class="flex-item">Item Two</div>
+            <div class="flex-item">Item Three</div>
+        </div>
+        <p style="text-align: center;">These flex items are in a row, but will stack as a column below 768px.</p>
+    </section>
+</body>
+</html>
