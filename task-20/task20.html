@@ -1,0 +1,150 @@
+<html>
+<head>
+<title>Pricing Page</title>
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --card-bg: #f0f0f0;
+      --button-bg: #007bff;
+      --button-color: #ffffff;
+    }
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #ffffff;
+      --card-bg: #1e1e1e;
+      --button-bg: #00bcd4;
+      --button-color: #000000;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .container {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .toggle-btn {
+      margin-bottom: 2rem;
+      padding: 0.5rem 1rem;
+      background: var(--button-bg);
+      color: var(--button-color);
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: transform 0.3s;
+    }
+
+    .toggle-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .pricing {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 10px;
+      width: 250px;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .card button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: var(--button-bg);
+      color: var(--button-color);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .card button:hover {
+      background: darkblue;
+    }
+
+    .card button:active {
+      transform: scale(0.95);
+    }
+
+    .subscribe-form input:focus {
+      border: 2px solid var(--button-bg);
+      outline: none;
+    }
+
+    .subscribe-form {
+      margin-top: 2rem;
+    }
+
+    .subscribe-form input {
+      padding: 0.5rem;
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    /* Responsive layout */
+    @media (max-width: 768px) {
+      .pricing {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body data-theme="light">
+  <div class="container">
+    <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
+    <div class="pricing">
+      <div class="card">
+        <h3>Free</h3>
+        <p>$0/month</p>
+        <button>Select</button>
+      </div>
+      <div class="card">
+        <h3>Standard</h3>
+        <p>$9.99/month</p>
+        <button>Select</button>
+      </div>
+      <div class="card">
+        <h3>Pro</h3>
+        <p>$19.99/month</p>
+        <button>Select</button>
+      </div>
+    </div>
+
+    <form class="subscribe-form">
+      <h4>Subscribe</h4>
+      <input type="email" placeholder="Enter your email" />
+    </form>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const current = body.getAttribute('data-theme');
+      body.setAttribute('data-theme', current === 'light' ? 'dark' : 'light');
+    }
+  </script>
+</body>
+</html>
