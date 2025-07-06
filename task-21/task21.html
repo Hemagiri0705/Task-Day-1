@@ -1,0 +1,440 @@
+<html>
+<head>
+    <style>
+        /* --- CSS Variables --- */
+        :root {
+            --primary-color: #007bff; /* Example blue */
+            --secondary-color: #6c757d; /* Example gray */
+            --accent-color: #28a745; /* Example green for success/focus */
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --white-bg: #ffffff;
+            --border-color: #ddd;
+            --transition-speed: 0.3s;
+            --padding-base: 1rem;
+            --gap-base: 1.5rem;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            color: var(--text-color);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--primary-color);
+            padding: var(--padding-base) calc(var(--padding-base) * 2); /* 1rem 2rem */
+            color: var(--white-bg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .navbar .logo {
+            font-size: 1.8rem; /* Using rem for scaling */
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .navbar nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex; /* Flex for navigation items */
+        }
+
+        .navbar nav ul li {
+            margin-left: 2em; /* Using em relative to parent font-size */
+        }
+
+        .navbar nav a {
+            color: var(--white-bg);
+            text-decoration: none;
+            font-size: 1.1em; /* Using em for scaling */
+            transition: color var(--transition-speed) ease;
+        }
+
+        .navbar nav a:hover,
+        .navbar nav a:focus { /* Simple focus for accessibility */
+            color: rgba(255, 255, 255, 0.8);
+            outline: none; /* Remove default outline */
+        }
+
+        .courses-section {
+            padding: calc(var(--padding-base) * 3); /* 3rem */
+            text-align: center;
+        }
+
+        .courses-section h2 {
+            font-size: 2.2rem; /* Using rem */
+            margin-bottom: calc(var(--gap-base) * 2); /* 3rem */
+            color: var(--primary-color);
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Flexible 3-column, min 280px */
+            gap: var(--gap-base); /* 1.5rem */
+            max-width: 1200px; /* Max width for content */
+            margin: 0 auto; /* Center the grid */
+        }
+
+        .course-card {
+            background-color: var(--white-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: var(--gap-base);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Space out content vertically */
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .course-card h3 {
+            font-size: 1.5em; /* Using em */
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+        }
+
+        .course-card p {
+            font-size: 1rem; /* Using rem */
+            margin-bottom: var(--gap-base);
+            flex-grow: 1; /* Allow paragraph to take available space */
+        }
+
+        /* --- Animated Buttons using Transitions --- */
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white-bg);
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem; /* Using rem */
+            text-decoration: none;
+            transition: background-color var(--transition-speed) ease, transform 0.2s ease;
+            align-self: flex-start; /* Align button to start in flex column */
+        }
+
+        .btn:hover,
+        .btn:focus {
+            background-color: #0056b3; /* Darker shade on hover */
+            transform: translateY(-2px); /* Slight lift */
+            outline: none;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover,
+        .btn-secondary:focus {
+            background-color: #5a6268;
+        }
+
+        .testimonials-section {
+            padding: calc(var(--padding-base) * 3);
+            background-color: var(--white-bg);
+            text-align: center;
+        }
+
+        .testimonials-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: calc(var(--gap-base) * 2);
+            color: var(--primary-color);
+        }
+
+        .testimonial-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            justify-content: center;
+            gap: var(--gap-base);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background-color: var(--light-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            flex: 1 1 300px; /* Allows cards to grow/shrink, with a base of 300px */
+            text-align: left; /* Align text within the card */
+            position: relative;
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        /* "Floating" effect - subtle lift and shadow */
+        .testimonial-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card .author {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .registration-section {
+            padding: calc(var(--padding-base) * 3);
+            background-color: var(--light-bg);
+            text-align: center;
+        }
+
+        .registration-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: calc(var(--gap-base) * 2);
+            color: var(--primary-color);
+        }
+
+        .registration-form {
+            background-color: var(--white-bg);
+            padding: calc(var(--padding-base) * 2);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left; /* Align labels/inputs */
+        }
+
+        .form-group {
+            margin-bottom: var(--gap-base);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"] {
+            width: calc(100% - 20px); /* Account for padding */
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-size: 1rem; /* Using rem */
+            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+
+        .form-group input[type="text"]:hover,
+        .form-group input[type="email"]:hover,
+        .form-group input[type="password"]:hover {
+            border-color: var(--secondary-color);
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group input[type="password"]:focus {
+            border-color: var(--accent-color); /* Highlight on focus */
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25); /* Subtle glowing effect */
+            outline: none; /* Remove default browser outline */
+        }
+
+        .registration-form button[type="submit"] {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.2rem; /* Using rem */
+            background-color: var(--primary-color);
+            color: var(--white-bg);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color var(--transition-speed) ease, transform 0.2s ease;
+        }
+
+        .registration-form button[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column; /* Stack logo and nav vertically */
+                align-items: flex-start; /* Align to left */
+                padding: var(--padding-base);
+            }
+
+            .navbar nav {
+                margin-top: var(--padding-base);
+                width: 100%; /* Take full width */
+            }
+
+            .navbar nav ul {
+                flex-direction: column; /* Stack nav items vertically */
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            .navbar nav ul li {
+                margin-left: 0;
+                margin-bottom: 0.8em; /* Spacing between stacked links */
+                width: 100%;
+            }
+
+            .navbar nav a {
+                display: block; /* Make links block level */
+                padding: 0.5rem 0;
+            }
+
+            .courses-section,
+            .testimonials-section,
+            .registration-section {
+                padding: calc(var(--padding-base) * 1.5); /* Reduce padding on mobile */
+            }
+
+            .course-grid {
+                grid-template-columns: 1fr; /* Single-column layout for course cards */
+            }
+
+            .testimonial-container {
+                flex-direction: column; /* Stack testimonials vertically */
+            }
+
+            .testimonial-card,
+            .registration-form {
+                width: auto; /* Allow natural width */
+                margin: 0 1rem; /* Add some side margin */
+            }
+        }
+
+        /* Smaller mobile devices */
+        @media (max-width: 480px) {
+            .navbar .logo {
+                font-size: 1.5rem;
+            }
+
+            .courses-section h2,
+            .testimonials-section h2,
+            .registration-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .course-card h3 {
+                font-size: 1.3em;
+            }
+
+            .btn,
+            .registration-form button[type="submit"] {
+                font-size: 1rem;
+                padding: 0.7rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">EduPlatform</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#register">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="courses" class="courses-section">
+            <h2>Our Popular Courses</h2>
+            <div class="course-grid">
+                <div class="course-card">
+                    <h3>Web Development Basics</h3>
+                    <p>Learn HTML, CSS, and JavaScript to build amazing websites from scratch. 
+                        No prior experience needed!</p>
+                    <button class="btn">Enroll Now</button>
+                </div>
+                <div class="course-card">
+                    <h3>Data Science Fundamentals</h3>
+                    <p>Dive into Python, data analysis, and machine learning concepts. 
+                        Master the tools of data science.</p>
+                    <button class="btn">Enroll Now</button>
+                </div>
+                <div class="course-card">
+                    <h3>Graphic Design Mastery</h3>
+                    <p>Unleash your creativity with advanced techniques in Photoshop, Illustrator, and InDesign.</p>
+                    <button class="btn">Enroll Now</button>
+                </div>
+                <div class="course-card">
+                    <h3>Mobile App Development</h3>
+                    <p>Build native mobile applications for iOS and Android using modern frameworks and best practices.</p>
+                    <button class="btn">Enroll Now</button>
+                </div>
+                <div class="course-card">
+                    <h3>Digital Marketing Strategy</h3>
+                    <p>Master SEO, SEM, social media marketing, and content strategy to boost online presence.</p>
+                    <button class="btn">Enroll Now</button>
+                </div>
+                <div class="course-card">
+                    <h3>Cybersecurity Essentials</h3>
+                    <p>Understand the fundamentals of network security, threat detection, and ethical hacking.</p>
+                    <button class="btn">Enroll Now</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials-section">
+            <h2>What Our Students Say</h2>
+            <div class="testimonial-container">
+                <div class="testimonial-card">
+                    <p>"The Web Development course exceeded my expectations! The instructors were knowledgeable
+                         and the content was practical."</p>
+                    <p class="author">- Jane Doe, Web Developer</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"I landed my dream job in data analytics thanks to the Data Science Fundamentals program. 
+                        Highly recommend!"</p>
+                    <p class="author">- John Smith, Data Analyst</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The Graphic Design course helped me elevate my portfolio. The feedback was invaluable."</p>
+                    <p class="author">- Emily White, Graphic Designer</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="register" class="registration-section">
+            <h2>Join Our Community</h2>
+            <form class="registration-form">
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required placeholder="Create a password">
+                </div>
+                <button type="submit">Register Now</button>
+            </form>
+        </section>
+    </main>
+
+    <footer style="text-align: center; padding: 2rem; background-color: var(--secondary-color); color: var(--white-bg);">
+        <p>&copy; 2025 EduPlatform. All rights reserved.</p>
+    </footer>
+</body>
+</html>
