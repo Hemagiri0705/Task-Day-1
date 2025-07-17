@@ -1,0 +1,88 @@
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+        .hidden { display: none; }
+        .error-msg { color:darkgoldenrod; }
+    </style>
+</head>
+<body>
+
+    <h1>innerText Examples</h1>
+
+    <h2 id="hidden-heading" class="container">My life is my message <span class="hidden">
+        Always true
+    </span></h2>
+
+    <button id="my-button" class="container">Education breeds confidence.confidence breeds hope.hope
+        breeds peace
+    </button>
+
+    <div id="line-break-div" class="container"></div>
+
+    <div class="container">
+        <label for="user-input">Enter text:</label>
+        <input type="text" id="user-input">
+        <div id="output-div" class="container"></div>
+    </div>
+
+    <div id="timestamp-div" class="container"></div>
+
+    <h2 id="loading-heading" class="container">I'm prepared for the worst,but hope for the best</h2>
+
+    <div class="error-msg container" id="error-message">Initial error message.</div>
+
+    <div id="compare-element" class="container">
+        <b>Compare innerText vs innerHTML</b>
+        <p>This is a <i>text</i> contained child elements,html tags</p>
+    </div>
+
+    <div id="append-div" class="container">
+        <p>Initial line 1.</p>
+    </div>
+
+    <script>
+        const hiddenHeading = document.getElementById('hidden-heading');
+        console.log("innerText:", hiddenHeading.innerText);
+        console.log("textContent:", hiddenHeading.textContent);
+
+        document.getElementById('my-button').innerText = "New Button Label";
+
+        document.getElementById('line-break-div').innerText = "First line.\nSecond line.\nThird line.";
+
+        const userInput = document.getElementById('user-input');
+        const outputDiv = document.getElementById('output-div');
+        userInput.addEventListener('input', () => {
+            outputDiv.innerText = userInput.value;
+        });
+
+        const updateTimestamp = () => {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+            const formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('timestamp-div').innerText = `Updated at ${formattedHours}:${formattedMinutes} ${ampm}`;
+        };
+        updateTimestamp();
+
+        setInterval(updateTimestamp, 1000);
+
+        const loadingHeading = document.getElementById('loading-heading');
+        loadingHeading.innerText = "Loading...";
+        setTimeout(() => {
+            loadingHeading.innerText = "Content Loaded!";
+        }, 2000);
+
+        document.getElementById('error-message').innerText = "Error: Invalid input provided.";
+
+        const compareElement = document.getElementById('compare-element');
+        console.log("innerText:", compareElement.innerText);
+        console.log("innerHTML:", compareElement.innerHTML);
+
+        document.getElementById('append-div').innerText += "\nNew line 2.\nAnother line.";
+    </script>
+</body>
+</html>

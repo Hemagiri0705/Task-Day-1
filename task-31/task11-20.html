@@ -1,0 +1,92 @@
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+        .note { color: green; }
+    </style>
+</head>
+<body>
+
+    <h1>textContent Tasks</h1>
+
+    <p id="paragraph-to-log" class="container">yoga is a discipline that opens the door to inner freedom</p>
+
+    <h2 id="heading-to-change" class="container">Original Heading</h2>
+
+    <div class="container">Current Score: <span class="score">100</span></div>
+
+    <div class="container">
+        <label for="char-input">Type something</label>
+        <input type="text" id="char-input">
+        <p>Character count: <span id="char-count">0</span></p>
+    </div>
+
+    <div id="html-stripper" class="container">
+        <p>Hope for the<strong> best </strong>but prepare <em>for the</em> worst.</p>
+        <ul><li>Item 1</li></ul>
+    </div>
+
+    <div id="raw-html-display" class="container"></div>
+
+    <div class="container">
+        <p class="note">Original Note 1</p>
+        <p class="note">Original Note 2</p>
+    </div>
+
+    <div id="greeting-container" class="container"></div>
+
+    <div id="object-display" class="container"></div>
+
+    <div id="multi-child-div" class="container">
+        <span>Child 1</span>
+        <p>Child 2</p>
+        <div><span>Child 3</span></div>
+    </div>
+
+    <script>
+        const paraToLog = document.getElementById('paragraph-to-log');
+        console.log("Paragraph textContent:", paraToLog.textContent);
+
+        document.getElementById('heading-to-change').textContent = "Hello, User!";
+
+        const scoreSpan = document.querySelector('.score');
+        scoreSpan.textContent = "150";
+
+        const charInput = document.getElementById('char-input');
+        const charCountSpan = document.getElementById('char-count');
+        charInput.addEventListener('input', () => {
+            charCountSpan.textContent = charInput.value.length;
+        });
+
+        const htmlStripperDiv = document.getElementById('html-stripper');
+        htmlStripperDiv.textContent = htmlStripperDiv.textContent;
+
+        document.getElementById('raw-html-display').textContent = 
+        '<h1>Raw Heading Example</h1><p>Hello brother</p>';
+
+        document.querySelectorAll('.note').forEach(element => {
+            element.textContent = "NOTE: " + element.textContent;
+        });
+
+        const userName = "Mahesh";
+        const currentTime = new Date();
+        const hours = currentTime.getHours();
+        let greeting;
+        if (hours < 12) {
+            greeting = "Good morning";
+        } else if (hours < 18) {
+            greeting = "Good afternoon";
+        } else {
+            greeting = "Good evening";
+        }
+        document.getElementById('greeting-container').textContent = `${greeting}, ${userName}`;
+
+        const myObject = { name: "Hemagiri", age: 20 };
+        document.getElementById('object-display').textContent = JSON.stringify(myObject);
+
+        const multiChildDiv = document.getElementById('multi-child-div');
+        console.log("Multi-child div textContent:", multiChildDiv.textContent);
+    </script>
+</body>
+</html>

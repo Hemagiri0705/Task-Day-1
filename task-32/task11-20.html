@@ -1,0 +1,101 @@
+<html>
+<head>
+    <style>
+        .hidden-paragraph {
+            display: none;
+        }
+        .box {
+            width: 50px;
+            height: 50px;
+            background-color: purple;
+            margin-top: 10px;
+        }
+        .my-card {
+            border: 1px solid black;
+            padding: 5px;
+            margin: 5px;
+        }
+        #animatedBox {
+            width: 50px;
+            height: 50px;
+            background-color: orange;
+            position: relative;
+            left: 0;
+            transition: left 0.5s;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Modifying Styles</h1>
+
+    <div id="myDiv">This is a div.</div>
+    <h2 id="myHeading">Master the blaster</h2>
+    <section id="mySection">
+        <p>The very things hold down are going to lift up/p>
+    </section>
+    <p id="hiddenPara" class="hidden-paragraph">This paragraph is hidden.</p>
+    <div id="borderElement" style="width: 100px; height: 100px; background-color: lightgray;"></div>
+    <button id="toggleBoxVisibilityBtn">Toggle Box</button>
+    <div id="toggleBox" class="box"></div>
+    <p>You never touch the sea,you never play with me, I'll never show you mercy I'll nevre let you be</p>
+    <p>Blood is pourin down aa aaa,His blood is all around aaaa The sea is full of blood,It's red sea</p>
+    <p></p>
+    <div id="cardElement" class="my-card">U sit on a throne of lies</div>
+    <img id="myImage" src="https://tse2.mm.bing.net/th/id/OIP.I76dKvXCmmTRSYJ-lrjNrQHaLH?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" 
+    alt="Small image">
+    <div id="animatedBox"></div>
+
+    <script>
+        const myDiv = document.getElementById('myDiv');
+        myDiv.style.backgroundColor = 'lightblue';
+
+        const myHeading = document.getElementById('myHeading');
+        myHeading.style.fontSize = '32px';
+
+        const mySection = document.getElementById('mySection');
+        mySection.style.display = 'none';
+
+        const hiddenPara = document.getElementById('hiddenPara');
+        setTimeout(() => {
+            hiddenPara.style.display = 'block';
+        }, 2000);
+
+        const borderElement = document.getElementById('borderElement');
+        borderElement.style.border = '2px solid red';
+
+        const toggleBox = document.getElementById('toggleBox');
+        document.getElementById('toggleBoxVisibilityBtn').addEventListener('click', () => {
+            if (toggleBox.style.display === 'none') {
+                toggleBox.style.display = 'block';
+            } else {
+                toggleBox.style.display = 'none';
+            }
+        });
+
+        const allParagraphs = document.querySelectorAll('p');
+        allParagraphs.forEach(p => {
+            p.style.color = 'blue';
+        });
+
+        const cardElement = document.getElementById('cardElement');
+        cardElement.style.padding = '20px';
+        cardElement.style.margin = '20px';
+
+        const myImage = document.getElementById('myImage');
+        myImage.style.transform = 'rotate(10deg)';
+
+        const animatedBox = document.getElementById('animatedBox');
+        animatedBox.style.position = 'relative';
+        let position = 0;
+        setInterval(() => {
+            position += 5;
+            if (position > 100) {
+                position = 0;
+            }
+            animatedBox.style.left = position + 'px';
+        }, 100);
+    </script>
+
+</body>
+</html>

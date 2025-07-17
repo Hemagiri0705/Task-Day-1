@@ -1,0 +1,83 @@
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+        .card { border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; background-color: #f9f9f9; }
+        .styled-text { color:chocolate; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>innerHTML Tasks</h1>
+
+    <div id="info" class="container"></div>
+
+    <p id="description" class="container">we have more to offer than just looking good</p>
+
+    <div id="image-container" class="container"></div>
+
+    <div id="list-container" class="container"></div>
+
+    <div id="main" class="container">
+        <h2>losers quit when they fail,winners fail until they succeed</h2>
+    </div>
+
+    <div id="card-layout-container" class="container"></div>
+
+    <div id="table-container" class="container"></div>
+
+    <div id="clear-me" class="container">
+        <p>This content will be cleared.</p>
+        <span>Another element.</span>
+    </div>
+
+    <section id="button-section" class="container"></section>
+
+    <p><span id="span-text">This is original span text</span></p>
+
+    <script>
+        document.getElementById('info').innerHTML = "Welcome <strong>Guest</strong>";
+
+        document.getElementById('description').innerHTML =
+         "<p>This is a <strong>new</strong> and improved description paragraph created using innerHTML.</p>";
+
+        document.getElementById('image-container').innerHTML = 
+        '<img src="https://1.bp.blogspot.com/-6iOrKum0V04/Tx6e5uypqQI/AAAAAAAAAAw/SZyZ-n7zhK8/s1600/1.jpg" alt="Placeholder Image">';
+
+        document.getElementById('list-container').innerHTML = 
+        '<ul><li>Item A</li><li>Item B</li><li>Item C</li></ul>';
+
+        document.getElementById('main').innerHTML += 
+        '<p>This paragraph was appended to the main div.</p>';
+
+        document.getElementById('card-layout-container').innerHTML = `
+            <div class="card">
+                <h3>Dynamic Card Title</h3>
+                <p>Some description for the card.</p>
+                <button>Click Me</button>
+            </div>
+        `;
+
+        document.getElementById('table-container').innerHTML = `
+            <table border="1">
+                <tr>
+                    <td>Row 1, Col 1</td>
+                    <td>Row 1, Col 2</td>
+                </tr>
+                <tr>
+                    <td>Row 2, Col 1</td>
+                    <td>Row 2, Col 2</td>
+                </tr>
+            </table>
+        `;
+
+        document.getElementById('clear-me').innerHTML = "";
+
+        document.getElementById('button-section').innerHTML = '<button>Click Me!</button>';
+
+        document.getElementById('span-text').innerHTML = 
+        '<span class="styled-text">this is a sytled span text</span>';
+    </script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<html>
+<head>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        section { margin-bottom: 25px; padding: 15px; border: 1px solid #eee; border-radius: 5px; }
+        h2 { color: #333; }
+
+        .active { background-color: lightgreen; border: 1px solid green; }
+        .error { border: 2px solid red; background-color: #ffeeee; }
+        .dark-mode { background-color: #333; color: #f0f0f0; }
+        .selected { border: 2px solid blue; background-color: lightblue; }
+        .btn { padding: 8px 15px; border: none; cursor: pointer; border-radius: 4px; }
+        .btn-primary { background-color: #007bff; color: white; }
+        .list-item { list-style-type: disc; margin-left: 20px; }
+        .highlight { border: 2px solid orange; box-shadow: 0 0 10px rgba(255, 165, 0, 0.5); }
+        .hidden { display: none; }
+        .modal-box { border: 1px solid #ccc; padding: 20px; margin-top: 20px; background-color: white; 
+        width: 300px; height: 150px; overflow: auto; }
+        .modal-box.open { display: block; }
+        .modal-box.close { display: none; }
+        .hovered { background-color: yellow; border: 1px solid orange; }
+
+        #myModal {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <section>
+        <h2>Add Class on Click</h2>
+        <button id="myButton">Click to Activate</button>
+    </section>
+
+    <section>
+        <h2>Remove Class on Valid Input</h2>
+        <label for="myFormField">You have to get lost before U find yourself</label><br>
+        <input type="text" id="myFormField" class="error" placeholder="Type something to remove error">
+        <p>We are who we choose to be</p>
+    </section>
+
+    <section>
+        <h2>Toggle Body Class</h2>
+        <button id="darkModeToggle">Toggle Dark Mode</button>
+    </section>
+
+    <section>
+        <h2>Check for Existing Class</h2>
+        <div id="someElement" class="box">
+            This element may or may not have the 'selected' class.
+        </div>
+        <button onclick="checkSelected()">Check Selected Status</button>
+    </section>
+
+    <section>
+        <h2>Apply Multiple Classes</h2>
+        <button id="anotherButton">Apply Multiple Classes</button>
+    </section>
+
+    <section>
+        <h2>Add Class to All List Items</h2>
+        <ul>
+            <li>Item One</li>
+            <li>Item Two</li>
+            <li>Item Three</li>
+        </ul>
+        <button onclick="applyListItemClass()">Apply List Item Class</button>
+    </section>
+
+    <section>
+        <h2>Toggle Highlight on Card</h2>
+        <div id="myCard" style="border: 1px solid #ddd; padding: 15px; margin-top: 10px;">
+            This is a card.
+        </div>
+        <button onclick="highlightCard('myCard')">Toggle Card Highlight</button>
+    </section>
+
+    <section>
+        <h2>Hide/Show Paragraphs</h2>
+        <p class="initial-paragraph">This is paragraph 1. It will be hidden.</p>
+        <p class="initial-paragraph">This is paragraph 2. It will also be hidden.</p>
+        <button onclick="toggleParagraphsVisibility()">Hide/Show Paragraphs</button>
+    </section>
+
+    <section>
+        <h2>Switch Modal Classes</h2>
+        <button id="modalToggleButton">Toggle Modal</button>
+        <div id="myModal" class="modal-box">
+            <h3>Modal Content</h3>
+            <p>This is the content of the modal box.</p>
+            <p>It will be toggled between 'open' and 'close' states.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Add/Remove Class on Hover</h2>
+        <div id="hoverBox" style="border: 1px solid purple; padding: 20px; margin-top: 10px; width: 200px; text-align: center;">
+            Hover over me!
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('myButton').addEventListener('click', function() {
+            this.classList.add('active');
+        });
+
+        document.getElementById('myFormField').addEventListener('input', function() {
+            const isValid = this.value.length > 0;
+            if (isValid) {
+                this.classList.remove('error');
+            } else {
+                this.classList.add('error');
+            }
+        });
+
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        document.getElementById('someElement').classList.add('selected');
+        function checkSelected() {
+            const myElement = document.getElementById('someElement');
+            if (myElement.classList.contains('selected')) {
+                alert('Element has the "selected" class.');
+            } else {
+                alert('Element does NOT have the "selected" class.');
+            }
+        }
+
+        document.getElementById('anotherButton').addEventListener('click', function() {
+            this.classList.add('btn', 'btn-primary');
+            this.textContent = 'Classes Added!';
+        });
+
+        function applyListItemClass() {
+            document.querySelectorAll('li').forEach(item => {
+                item.classList.add('list-item');
+            });
+            alert("List item classes applied!");
+        }
+
+        function highlightCard(cardElementId) {
+            document.getElementById(cardElementId).classList.toggle('highlight');
+        }
+
+        let paragraphsHidden = false;
+        function toggleParagraphsVisibility() {
+            const paragraphs = document.querySelectorAll('.initial-paragraph');
+            if (!paragraphsHidden) {
+                paragraphs.forEach(paragraph => {
+                    paragraph.classList.add('hidden');
+                });
+                alert("Paragraphs hidden!");
+                paragraphsHidden = true;
+            } else {
+                paragraphs.forEach(paragraph => {
+                    paragraph.classList.remove('hidden');
+                });
+                alert("Paragraphs shown!");
+                paragraphsHidden = false;
+            }
+        }
+
+        document.getElementById('modalToggleButton').addEventListener('click', function() {
+            const modal = document.getElementById('myModal');
+            modal.classList.toggle('open');
+            if (modal.classList.contains('open')) {
+                modal.classList.remove('close');
+            } else {
+                modal.classList.add('close');
+            }
+        });
+
+        document.getElementById('hoverBox').addEventListener('mouseover', function() {
+            this.classList.add('hovered');
+        });
+        document.getElementById('hoverBox').addEventListener('mouseout', function() {
+            this.classList.remove('hovered');
+        });
+    </script>
+
+</body>
+</html>

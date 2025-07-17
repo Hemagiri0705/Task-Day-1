@@ -1,0 +1,62 @@
+<html>
+<head>
+    <title>DOM Attribute Manipulation</title>
+</head>
+<body>
+
+    <h1>DOM Attribute Manipulation</h1>
+
+    <a href="https://www.google.com" id="myLink">Google</a>
+    <img src="https://picfiles.alphacoders.com/367/thumb-1920-367456.jpg" alt="Placeholder image" 
+    id="myImage">
+    <div id="myDiv">This is a div.</div>
+    <a href="https://www.openai.com">OpenAI</a>
+    <a href="https://www.microsoft.com">Microsoft</a>
+    <input type="text" id="myInput" required>
+    <img src="https://tse2.mm.bing.net/th/id/OIP.dBD1TXrZXhMvi-SrLOK7ZAHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+     alt="Another image" id="imageToRemoveAlt">
+    <input type="text" id="placeholderInput">
+
+    <script>
+        const link = document.getElementById('myLink');
+        console.log("href:", link.getAttribute('href'));
+
+        const image = document.getElementById('myImage');
+        console.log("src:", image.getAttribute('src'));
+
+        link.setAttribute('href', 'https://www.bing.com');
+        console.log("Updated href:", link.getAttribute('href'));
+
+        image.setAttribute('src', 'https://wallpapercave.com/wp/wp11340680.jpg');
+        console.log("Updated src:", image.getAttribute('src'));
+
+        const myDiv = document.getElementById('myDiv');
+        myDiv.setAttribute('data-id', 'unique-div-123');
+        console.log("Data-id:", myDiv.getAttribute('data-id'));
+
+        const allLinks = document.querySelectorAll('a');
+        allLinks.forEach(link => {
+            link.setAttribute('target', '_blank');
+        });
+        console.log("All links now open in new tabs.");
+
+        const myInput = document.getElementById('myInput');
+        console.log("Input required status:", myInput.getAttribute('required') !== null);
+
+        const imageToRemoveAlt = document.getElementById('imageToRemoveAlt');
+        console.log("Alt before removal:", imageToRemoveAlt.getAttribute('alt'));
+        imageToRemoveAlt.removeAttribute('alt');
+        console.log("Alt after removal:", imageToRemoveAlt.getAttribute('alt'));
+
+        const placeholderInput = document.getElementById('placeholderInput');
+        placeholderInput.setAttribute('placeholder', 'Enter your name here...');
+        console.log("Placeholder set on input.");
+
+        const newElement = document.createElement('p');
+        newElement.setAttribute('id', 'newlyCreatedParagraph');
+        newElement.textContent = "This is a dynamically created paragraph.";
+        document.body.appendChild(newElement);
+        console.log("New element created with ID:", newElement.id);
+    </script>
+</body>
+</html>
