@@ -1,0 +1,104 @@
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .box-style { border: 1px solid black; padding: 10px; margin-bottom: 10px; }
+        .card-class { background-color: #f0f0f0; padding: 15px; border-radius: 5px; }
+        .highlight { border: 2px solid green; }
+    </style>
+</head>
+<body>
+
+    <h1 id="title">DOM Manipulation Tasks</h1>
+    <h2 id="heading">Original Heading</h2>
+
+    <div id="box" class="box-style">
+        This is a box.
+    </div>
+
+    <p id="message">original message.</p>
+
+    <p id="mainText">don't just be good to others be good to yourself.</p>
+
+    <div id="hideMe">
+        if you can dream it,you can achieve it
+    </div>
+
+    <div id="container" class="box-style">
+        This container will get a border.
+    </div>
+
+    <label for="username">Username:</label>
+    <input type="text" id="username" value="InitialUser"><br><br>
+
+    <div id="card" class="box-style">
+        This is a card.
+    </div>
+
+    <button id="toggleBtn">Toggle Class</button>
+
+    <p id="paral">believe you can and you're halfway there.</p>
+    <button onclick="changeParalColor()">Change Paragraph Color</button>
+
+    <div id="status">Status: Not submitted yet.</div>
+    <form onsubmit="updateStatus(event)">
+        <label for="inputField">Input:</label>
+        <input type="text" id="inputField" value="Test">
+        <button type="submit">Submit Form</button>
+    </form>
+
+    <p id="greeting">Hello, User!</p>
+
+    <div id="targetBox" class="box-style">
+        This box's style will be updated.
+    </div>
+    <button onclick="updateTargetBoxStyle()">Update Target Box</button>
+
+    <script>
+        const titleElement = document.getElementById('title');
+        console.log("(Title Element):", titleElement);
+
+        document.getElementById('heading').textContent = "Hello DOM!";
+
+        document.getElementById('box').style.backgroundColor = 'blue';
+
+        document.getElementById('message').innerHTML = 'This is the new <strong>Bold</strong> message.';
+
+        document.getElementById('mainText').style.fontSize = '24px';
+
+        document.getElementById('hideMe').style.display = 'none';
+
+        document.getElementById('container').style.border = '2px solid red';
+
+        document.getElementById('username').value = 'Guest';
+
+        document.getElementById('card').classList.add('card-class');
+
+        document.getElementById('card').classList.remove('box-style');
+
+        document.getElementById('toggleBtn').addEventListener('click', function() {
+            this.classList.toggle('highlight');
+        });
+
+        function changeParalColor() {
+            document.getElementById('paral').style.color = 'purple';
+        }
+
+        function updateStatus(event) {
+            event.preventDefault(); 
+            document.getElementById('status').innerText = 'Status: Form submitted!';
+        }
+
+        setTimeout(() => {
+            alert(document.getElementById('greeting').textContent);
+        }, 1000); // Alerts after 1 second
+
+        function updateTargetBoxStyle() {
+            const targetBox = document.getElementById('targetBox');
+            targetBox.style.backgroundColor = 'lightgreen';
+            targetBox.style.padding = '20px';
+            targetBox.style.fontWeight = 'bold';
+        }
+    </script>
+</body>
+</html>
