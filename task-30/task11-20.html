@@ -1,0 +1,154 @@
+<html>
+<head>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        div { border: 1px dashed #ccc; padding: 5px; margin-bottom: 5px; }
+        table { border-collapse: collapse; width: 80%; margin-top: 10px; }
+        th, td { border: 1px solid black; padding: 8px; text-align: left; }
+        .rounded { border-radius: 8px; background-color: #007bff; color: white; border: none; 
+            padding: 8px 12px; }
+        img { max-width: 100%; height: auto; display: block; margin-bottom: 10px; }
+        section { margin: 15px 0; padding: 10px; background-color: #f0f0f0; }
+        footer { background-color: #ddd; padding: 10px; text-align: center; margin-top: 20px; }
+        .highlight-text { background-color: yellow; } /* For Task 12 */
+        #main-content { padding: 20px; border: 1px solid #eee; margin-top: 10px; } 
+        .card { border: 1px solid #aaa; padding: 10px; margin: 10px 0; }
+        .card .title { font-size: 1.2em; }
+        nav ul { list-style: none; padding: 0; }
+        nav li { display: inline; margin-right: 15px; }
+    </style>
+</head>
+<body>
+
+    <h1>Initial Heading</h1>
+    <h2>Subheading One</h2>
+    <p>Be kind whenever possible it is always possible</p>
+    <p>Difficult roads lead to beautiful destinations</p>
+    <div>A div element.</div>
+    <div>Another div.</div>
+    <ul>
+        <li>List item A</li>
+        <li>List item B</li>
+        <li>List item C</li>
+    </ul>
+
+    <section>
+        <h3>Section Title</h3>
+        <img src="https://i0.wp.com/zinemaniacos.com/wp-content/uploads/2016/09/train-to-busan-poster.jpg?
+        ssl=1" alt="Section Image">
+    </section>
+
+    <table>
+        <thead><tr><th>Col 1</th><th>Col 2</th></tr></thead>
+        <tbody><tr><td>Data 1</td><td>Data 2</td></tr></tbody>
+    </table>
+
+    <button>Simple Button</button>
+    <button class="btn">Action Button</button>
+
+    <footer>
+        There are some things you learn best in calm and some in storm
+    </footer>
+
+    <div id="main-content">
+        <h1 class="target-h1">Query Selector Target H1</h1>
+        <p class="highlight-text">you are never too old to set another goal or to dream a new dream</p>
+        <p>Hope for the best but prepare for the worst</p>
+        <input type="text" value="Default Value">
+        <label for="myInput">My Label:</label> <input type="text" id="myInput">
+    </div>
+
+    <div class="card">
+        <p>Titles are but nicknames and every nickname is a title</p>
+        <p class="title">Card Title</p>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <h4>Another Section</h4>
+        <img src="https://www.themoviedb.org/t/p/original/wjbOlovDadOdPKkSAMohLCjbIsc.jpg"
+         alt="Section Image">
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Part 1: getElementsByTagName()
+            const pTags = document.getElementsByTagName('p');
+            console.log(pTags);
+
+            const liTags = document.getElementsByTagName('li');
+            for (let i = 0; i < liTags.length; i++) {
+                console.log(liTags[i].textContent);
+            }
+
+            const h2Tags = document.getElementsByTagName('h2');
+            for (let i = 0; i < h2Tags.length; i++) {
+                h2Tags[i].style.color = 'purple';
+            }
+
+            const divTags = document.getElementsByTagName('div');
+            console.log(divTags.length);
+
+            const imgTags = document.getElementsByTagName('img');
+            for (let i = 0; i < imgTags.length; i++) {
+                imgTags[i].style.width = '200px';
+            }
+
+            const sectionTags = document.getElementsByTagName('section');
+            for (let i = 0; i < sectionTags.length; i++) {
+                sectionTags[i].style.border = '1px solid red';
+            }
+
+            const h1Tags = document.getElementsByTagName('h1');
+            for (let i = 0; i < h1Tags.length; i++) {
+                h1Tags[i].style.fontSize = '32px';
+            }
+
+            const tableTags = document.getElementsByTagName('table');
+            for (let i = 0; i < tableTags.length; i++) {
+                tableTags[i].style.backgroundColor = 'lightyellow';
+            }
+
+            const buttonTags = document.getElementsByTagName('button');
+            for (let i = 0; i < buttonTags.length; i++) {
+                buttonTags[i].classList.add('rounded');
+            }
+
+            const footerTags = document.getElementsByTagName('footer');
+            for (let i = 0; i < footerTags.length; i++) {
+                footerTags[i].style.display = 'none';
+            }
+
+            // Part 2: querySelector()
+            document.querySelector('h1').textContent = 'DOM Tasks Completed';
+
+            document.querySelector('.highlight-text').style.fontWeight = 'bold';
+
+            document.querySelector('#main-content').style.backgroundColor = 'lightblue';
+
+            document.querySelector('input').value = 'Hello';
+
+            document.querySelector('.card p').style.textDecoration = 'underline';
+
+            document.querySelector('.card .title').style.fontFamily = 'monospace';
+
+            document.querySelector('.btn').textContent = 'Clicked';
+
+            document.querySelector('label').style.color = 'green';
+
+            const navLiText = document.querySelector('nav > li'); 
+            if (navLiText) console.log(navLiText.textContent);
+            else console.log("Task 19: Could not find 'nav > li'. Check HTML structure."); // Error check
+
+            document.querySelector('section img').src ='https://fontmeme.com/images/squid-game-font-768x1138.jpg';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        div {
+            border: 1px dashed lightgray;
+            padding: 5px;
+            margin-bottom: 5px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        .rounded {
+            border-radius: 8px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
+        }
+        section {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+        footer {
+            background-color: #ddd;
+            padding: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to DOM Manipulation</h1>
+    <h2>H2 heading</h2>
+    <p>The future belongs to the competent get good, get better, be the best!</p>
+    <p>The purpose of our lives is to be happy</p>
+    <div>div element.</div>
+    <div>Another div.</div>
+    <ul>
+        <li>List item one</li>
+        <li>List item two</li>
+        <li>List item three</li>
+    </ul>
+
+    <section>
+        <h3>Section 1</h3>
+        <p>A king's son will not necessarily become a king;only the de-serving will become one</p>
+        <img src="https://wallpaperaccess.com/full/8370400.jpg" alt="Placeholder Image">
+    </section>
+
+    <section>
+        <h3>Section 2</h3>
+        <p>Always remember that your present situation is not your final destination.</p>
+        <img src="https://cdn11.bigcommerce.com/s-yzgoj/images/stencil/1280x1280/products/2920491/5933049/
+        MOVCJ4501__95435.1679580297.jpg?c=2" alt="Placeholder Image">
+    </section>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Header 1</th>
+                <th>Header 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Data 1A</td>
+                <td>Data 1B</td>
+            </tr>
+            <tr>
+                <td>Data 2A</td>
+                <td>Data 2B</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button>Click Me</button>
+    <button>Submit</button>
+
+    <footer>
+        <p>page footer.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const pElements = document.getElementsByTagName('p');
+            console.log('All <p> tags:', pElements);
+
+            const liElements = document.getElementsByTagName('li');
+            for (let i = 0; i < liElements.length; i++) {
+                console.log(`LI text content: ${liElements[i].textContent}`);
+            }
+
+            const h2Elements = document.getElementsByTagName('h2');
+            for (let i = 0; i < h2Elements.length; i++) {
+                h2Elements[i].style.color = 'purple';
+            }
+            console.log('All <h2> tags text color changed to purple.');
+
+            const divElements = document.getElementsByTagName('div');
+            console.log('Number of <div> tags:', divElements.length);
+
+            const imgElements = document.getElementsByTagName('img');
+            for (let i = 0; i < imgElements.length; i++) {
+                imgElements[i].style.width = '200px';
+            }
+            console.log('ll <img> tags width set to 200px.');
+
+            const sectionElements = document.getElementsByTagName('section');
+            for (let i = 0; i < sectionElements.length; i++) {
+                sectionElements[i].style.border = '1px solid red';
+            }
+            console.log(' All <section> tags have a red border.');
+
+            const h1Elements = document.getElementsByTagName('h1');
+            for (let i = 0; i < h1Elements.length; i++) {
+                h1Elements[i].style.fontSize = '32px';
+            }
+            console.log('All <h1> tags font size set to 32px.');
+
+            const tableElements = document.getElementsByTagName('table');
+            for (let i = 0; i < tableElements.length; i++) {
+                tableElements[i].style.backgroundColor = 'lightyellow';
+            }
+            console.log('All <table> tags background color changed to lightyellow.');
+
+            const buttonElements = document.getElementsByTagName('button');
+            for (let i = 0; i < buttonElements.length; i++) {
+                buttonElements[i].classList.add('rounded');
+            }
+            console.log('A class "rounded" added to all <button> tags.');
+
+            const footerElements = document.getElementsByTagName('footer');
+            for (let i = 0; i < footerElements.length; i++) {
+                footerElements[i].style.display = 'none';
+            }
+            console.log('All <footer> tags are hidden.');
+        });
+    </script>
+</body>
+</html>

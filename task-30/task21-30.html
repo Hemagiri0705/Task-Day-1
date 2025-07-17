@@ -1,0 +1,112 @@
+<html>
+<head>
+    <style>
+        .notification {
+            border: 1px solid black;
+            padding: 5px;
+            margin-bottom: 5px;
+        }
+        .error {
+            color: red;
+        }
+        table, th, td {
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="item">Item 1</div>
+    <div class="item card">Item 2 Card</div>
+    <div class="item">Item 3</div>
+    <div class="card">Just a card</div>
+
+    <ul class="menu">
+        <li class="menu-item">Menu Item 1</li>
+        <li class="menu-item">Menu Item 2</li>
+        <li class="menu-item">Menu Item 3</li>
+    </ul>
+
+    <p>This is a <a href="https://anydesk.com/en" class="link">link one</a>.</p>
+    <p>Another <a href="https://www.bluestacks.com/" class="link">link two</a>.</p>
+    <p>Just some text with no link.</p>
+
+    <form>
+        <input type="text" value="Default Text 1"><br>
+        <input type="text" value="Default Text 2"><br>
+        <input type="password" value="secret"><br>
+    </form>
+
+    <div class="notification">Important notification 1</div>
+    <div class="notification">Another notification 2</div>
+
+    <p class="error">Error message 1</p>
+    <p class="error">Error message 2</p>
+    <p>No error here.</p>
+
+    <p class="emoji">Happy</p>
+    <p class="emoji">Sad</p>
+    <p>Normal text</p>
+
+    <table>
+        <tr>
+            <td>Cell 1,1</td>
+            <td>Cell 1,2</td>
+        </tr>
+        <tr>
+            <td>Cell 2,1</td>
+            <td>Cell 2,2</td>
+        </tr>
+    </table>
+
+    <script>
+        const items = document.querySelectorAll('.item');
+        console.log(items);
+
+        const menuItems = document.querySelectorAll('.menu-item');
+        menuItems.forEach(item => {
+            item.style.color = 'purple';
+        });
+
+        const links = document.querySelectorAll('a');
+        links.forEach(link => {
+            link.style.textDecoration = 'underline';
+        });
+
+        const linkElements = document.querySelectorAll('.link');
+        linkElements.forEach(link => {
+            link.style.color = 'blue';
+            link.style.fontWeight = 'bold';
+        });
+
+        const inputFields = document.querySelectorAll('input');
+        inputFields.forEach(input => {
+            input.value = '';
+        });
+
+        const notifications = document.querySelectorAll('.notification');
+        notifications.forEach(notification => {
+            notification.style.backgroundColor = 'pink';
+        });
+
+        const cards = document.querySelectorAll('.card');
+        console.log(cards.length);
+
+        const errorMessages = document.querySelectorAll('.error');
+        errorMessages.forEach(error => {
+            error.textContent = 'Fixed';
+        });
+
+        const emojiElements = document.querySelectorAll('.emoji');
+        emojiElements.forEach(element => {
+            element.innerHTML += ' &#128512;';
+        });
+
+        const tableCells = document.querySelectorAll('td');
+        tableCells.forEach(cell => {
+            cell.style.border = '1px solid gray';
+        });
+    </script>
+</body>
+</html>
