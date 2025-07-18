@@ -1,0 +1,169 @@
+<html>
+<head>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        #container { border: 1px solid #ccc; padding: 15px; margin-top: 20px; }
+        #todolist, #dropdown { margin-bottom: 10px; }
+        .card { border: 1px solid lightblue; padding: 10px; margin-bottom: 10px; }
+        button { margin-top: 10px; padding: 8px 12px; cursor: pointer; margin-right: 5px;}
+        table, th, td { border: 1px solid black; border-collapse: collapse; padding: 5px; }
+        .done { text-decoration: line-through; color: grey; }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>The only way to achieve the impossible,is to believe it's posssible</h2>
+        <ul id="todolist">
+            <li>Existing Item 1</li>
+            <li class="done">Done Item A</li>
+            <li>Existing Item 2</li>
+            <li class="done">Done Item B</li>
+        </ul>
+
+        <select id="dropdown">
+            <option value="option1">Existing Option 1</option>
+            <option value="option2">Existing Option 2</option>
+        </select>
+
+        <div class="card" id="card-alpha">
+            <h3>Card Alpha</h3>
+            <p>Never let anyone know what you are thinking</p>
+        </div>
+        <div class="card" id="card-beta">
+            <h3>Card Beta</h3>
+            <p>out of the mountain of despair a stone of hope</p>
+        </div>
+    </div>
+
+    <div id="table-container">
+        <h2>Dynamic Table</h2>
+        <table id="myTable">
+            <thead>
+                <tr><th>Header 1</th><th>Header 2</th><th>Header 3</th></tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <button id="removeSpecificElementBtn">Remove 'Existing Item 1'</button>
+    <button id="deleteCardButton">Delete Card Alpha</button>
+    <button id="resetButton">Reset Container</button>
+
+    <script>
+        const newPElement = document.createElement('p');
+        newPElement.textContent = "the best preparation for tomorrow is doing your best today";
+        console.log('New P Element:', newPElement);
+
+        const helloDiv = document.createElement('div');
+        helloDiv.textContent = 'Hello DOM!';
+        document.body.appendChild(helloDiv);
+
+        const newLi = document.createElement('li');
+        newLi.textContent = 'New Todo Item';
+        document.getElementById('todolist').appendChild(newLi);
+
+        const newImage = document.createElement('img');
+        newImage.setAttribute('src', 'https://tse3.mm.bing.net/th/id/OIF.6MxL4bmAlQUUjc9vUw9okQ?r=0&rs=1&pid=ImgDetMain&o=7&rm=3');
+        newImage.setAttribute('alt', 'DOM Placeholder');
+        newImage.style.display = 'block';
+        newImage.style.marginTop = '10px';
+        document.getElementById('container').appendChild(newImage);
+
+        const buttonWrapperDiv = document.createElement('div');
+        const clickMeButton = document.createElement('button');
+        clickMeButton.textContent = 'Click Me!';
+        buttonWrapperDiv.appendChild(clickMeButton);
+        document.getElementById('container').appendChild(buttonWrapperDiv);
+
+        const todoList = document.getElementById('todolist');
+        for (let i = 1; i <= 3; i++) {
+            const loopLi = document.createElement('li');
+            loopLi.textContent = `Loop Added Item ${i}`;
+            todoList.appendChild(loopLi);
+        }
+
+        const newSection = document.createElement('section');
+        newSection.id = 'dynamic-section';
+        newSection.style.border = '1px dashed orange';
+        newSection.style.padding = '10px';
+        newSection.style.marginTop = '15px';
+        document.body.appendChild(newSection);
+        
+        const newH3 = document.createElement('h3');
+        newH3.textContent = 'Dynamic Section Heading';
+        newSection.append(newH3, newPElement);
+
+        document.querySelectorAll('.card').forEach(card => {
+            const cardParagraph = document.createElement('p');
+            cardParagraph.textContent = 'success is stumbling from failure to failure with no loss of enthusiasm';
+            card.appendChild(cardParagraph);
+        });
+
+        const dropdown = document.getElementById('dropdown');
+        const newOption = document.createElement('option');
+        newOption.value = 'newOptionValue';
+        newOption.textContent = 'New Dynamic Option';
+        dropdown.appendChild(newOption);
+
+        const tableBody = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+        const newRow = document.createElement('tr');
+        for (let i = 0; i < 3; i++) {
+            const cell = document.createElement('td');
+            cell.textContent = `Cell ${i + 1}`;
+            newRow.appendChild(cell);
+        }
+        tableBody.appendChild(newRow);
+
+        document.getElementById('removeSpecificElementBtn').onclick = () => {
+            const firstTodoItem = document.querySelector('#todolist li:first-child');
+            if (firstTodoItem) {
+                firstTodoItem.remove();
+                console.log('First todo item removed.');
+            }
+        };
+
+        setTimeout(() => {
+            if (helloDiv.parentNode) {
+                helloDiv.parentNode.removeChild(helloDiv);
+                console.log('Hello DOM div removed using removeChild().');
+            }
+        }, 3000);
+
+        document.getElementById('deleteCardButton').onclick = () => {
+            const cardToDelete = document.getElementById('card-alpha');
+            if (cardToDelete) {
+                cardToDelete.remove();
+                console.log('Card Alpha removed.');
+            }
+        };
+
+        const removeDoneItemsButton = document.createElement('button');
+        removeDoneItemsButton.textContent = 'Remove Done Items';
+        document.body.appendChild(removeDoneItemsButton);
+
+        removeDoneItemsButton.onclick = () => {
+            document.querySelectorAll('#todolist li').forEach(item => {
+                if (item.textContent.toLowerCase().includes('done')) {
+                    item.remove();
+                    console.log(`Removed: ${item.textContent}`);
+                }
+            });
+            removeDoneItemsButton.remove();
+        };
+
+        document.getElementById('resetButton').onclick = () => {
+            const container = document.getElementById('container');
+            container.innerHTML = '<h2>Content Area Reset</h2><p>All previous content cleared!</p>';
+            const newTodoList = document.createElement('ul');
+            newTodoList.id = 'todolist';
+            container.appendChild(newTodoList);
+
+            const newDropdown = document.createElement('select');
+            newDropdown.id = 'dropdown';
+            container.appendChild(newDropdown);
+        };
+    </script>
+</body>
+</html>
+

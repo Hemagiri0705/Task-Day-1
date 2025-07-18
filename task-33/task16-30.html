@@ -1,0 +1,171 @@
+<html>
+<head>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        .box { width: 100px; height: 100px; border: 2px solid black; margin: 10px 0;
+             background-color: lightgray; display: flex; justify-content: center; align-items: center; }
+        .inner-box { width: 60px; height: 60px; background-color: lightcoral; }
+        .nested-div { padding: 10px; border: 1px solid blue; margin: 10px 0; }
+        .nested-div button { margin-top: 5px; }
+        #imageBox img { opacity: 1; transition: opacity 0.3s; }
+    </style>
+</head>
+<body>
+
+    <button id="clickLogBtn">Log Click</button>
+    <div class="box" id="hoverBox">Hover Me</div>
+    <input type="text" id="textInput" placeholder="Type here">
+    <p id="inputLog"></p>
+
+    <button id="sayHiBtn">Say Hi</button>
+    <button id="clickOnceBtn">Click Once</button>
+
+    <div id="multiBtnContainer">
+        <button class="event-delegation-btn">Button A</button>
+        <button class="event-delegation-btn">Button B</button>
+        <button class="event-delegation-btn">Button C</button>
+    </div>
+
+    <div class="box" id="targetClickBox">Click to see target</div>
+
+    <div class="nested-div" id="parentDiv">
+        Parent Div
+        <button id="childBtn">Child Button</button>
+    </div>
+
+    <form id="myForm">
+        <input type="text" placeholder="Form input">
+        <button type="submit">Submit</button>
+    </form>
+    <p id="formMessage" style="color: red;"></p>
+
+    <div id="propagationParent" style="border: 2px solid purple; padding: 20px; margin-top: 10px;">
+        Parent
+        <button id="child1" style="margin: 5px;">Child 1</button>
+        <button id="child2" style="margin: 5px;">Child 2 (Stop Prop.)</button>
+    </div>
+
+    <select id="mySelect">
+        <option value="">--Select--</option>
+        <option value="Option A selected">Option A</option>
+        <option value="Option B selected">Option B</option>
+    </select>
+    <p id="selectOutput"></p>
+
+    <button id="changeBgBtn">Change Page BG</button>
+
+    <input type="search" id="searchField" placeholder="Search">
+    <p id="liveInputDisplay"></p>
+
+    <div id="imageContainer">
+        <img id="opacityImg" 
+        src="https://m.media-amazon.com/images/M/MV5BMWI4N2Y5NWUtNzEwOC00YjYzLWEzY2ItN2YwYTIxYzBjZGZmXkEyXkFqcGc@._V1_.jpg" 
+        alt="Example" style="width:150px;">
+    </div>
+
+    <div class="box" id="doubleClickBox">Double Click Me</div>
+
+    <script>
+        document.getElementById('clickLogBtn').addEventListener('click', () => {
+            console.log('Button clicked');
+        });
+
+        const hoverBox = document.getElementById('hoverBox');
+        hoverBox.addEventListener('mouseover', () => {
+            hoverBox.style.backgroundColor = 'lightblue';
+        });
+        hoverBox.addEventListener('mouseout', () => {
+            hoverBox.style.backgroundColor = 'lightgray';
+        });
+
+        document.getElementById('textInput').addEventListener('input', (event) => {
+            document.getElementById('inputLog').textContent = `Input: ${event.target.value}`;
+            console.log('Input event:', event.target.value);
+        });
+
+        function greetingFunction() {
+            alert('Hi there!');
+        }
+        document.getElementById('sayHiBtn').addEventListener('click', greetingFunction);
+
+        const clickOnceBtn = document.getElementById('clickOnceBtn');
+        const oneTimeClickHandler = () => {
+            alert('You clicked me once!');
+            clickOnceBtn.removeEventListener('click', oneTimeClickHandler);
+            console.log('Listener removed.');
+        };
+        clickOnceBtn.addEventListener('click', oneTimeClickHandler);
+
+        document.getElementById('multiBtnContainer').addEventListener('click', (event) => {
+            if (event.target.classList.contains('event-delegation-btn')) {
+                console.log(`Button ${event.target.textContent.split(' ')[1]} clicked`);
+            }
+        });
+
+        document.getElementById('targetClickBox').addEventListener('click', (event) => {
+            console.log('Clicked element:', event.target.id || event.target.tagName);
+        });
+
+        const parentDiv = document.getElementById('parentDiv');
+        const childBtn = document.getElementById('childBtn');
+        parentDiv.addEventListener('click', (event) => {
+            console.log('Parent Click: event.target =', event.target.id || event.target.tagName, 
+            '; event.currentTarget =', event.currentTarget.id);
+        });
+        childBtn.addEventListener('click', (event) => {
+            console.log('Child Click: event.target =', event.target.id || event.target.tagName, 
+            '; event.currentTarget =', event.currentTarget.id);
+        });
+
+        document.getElementById('myForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+            document.getElementById('formMessage').textContent = 'Form submission prevented!';
+            console.log('Form submission prevented.');
+        });
+
+        const propagationParent = document.getElementById('propagationParent');
+        const child1 = document.getElementById('child1');
+        const child2 = document.getElementById('child2');
+
+        propagationParent.addEventListener('click', () => console.log('Parent Clicked'));
+        child1.addEventListener('click', () => console.log('Child 1 Clicked (Bubbles)'));
+        child2.addEventListener('click', (event) => {
+            event.stopPropagation();
+            console.log('Child 2 Clicked (Propagation Stopped!)');
+        });
+
+        document.getElementById('mySelect').onchange = (event) => {
+            document.getElementById('selectOutput').textContent = event.target.value;
+        };
+
+        document.getElementById('changeBgBtn').onclick = () => {
+            document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 80%)`;
+        };
+
+        document.getElementById('searchField').oninput = (event) => {
+            document.getElementById('liveInputDisplay').textContent = `You typed: ${event.target.value}`;
+        };
+
+        const opacityImg = document.getElementById('opacityImg');
+        opacityImg.onmouseover = () => {
+            opacityImg.style.opacity = '0.5';
+        };
+        opacityImg.onmouseout = () => {
+            opacityImg.style.opacity = '1';
+        };
+
+        const doubleClickBox = document.getElementById('doubleClickBox');
+        let isLarge = false;
+        doubleClickBox.ondblclick = () => {
+            if (isLarge) {
+                doubleClickBox.style.width = '100px';
+                doubleClickBox.style.height = '100px';
+            } else {
+                doubleClickBox.style.width = '150px';
+                doubleClickBox.style.height = '150px';
+            }
+            isLarge = !isLarge;
+        };
+    </script>
+</body>
+</html>
